@@ -12,11 +12,13 @@ const controllers = require('./controllers')
 // database
 const db = require('./models')
 
-// routes
+// homepage route
 app.get('/', function homepage (req, res) {
   res.sendFile('views/index.html', ({root: __dirname}))
 })
 
+// routes
+app.get()
 /**********
  * SERVER *
  **********/
