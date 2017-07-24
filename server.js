@@ -17,6 +17,8 @@ app.get('/', function homepage (req, res) {
   res.sendFile('views/index.html', ({root: __dirname}))
 })
 
+app.get('/api', controllers.api.index)
+
 // routes
 
 /**********
