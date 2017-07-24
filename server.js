@@ -18,7 +18,7 @@ app.get('/', function homepage (req, res) {
 })
 
 // routes
-app.get()
+
 /**********
  * SERVER *
  **********/
