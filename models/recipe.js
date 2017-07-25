@@ -1,5 +1,6 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema
+let Review = require('./review.js')
 
 let RecipeSchema = new Schema({
   name: String,
