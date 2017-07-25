@@ -21,3 +21,7 @@ sampleRecipes.push({
   calories: 800,
   reviews: [Review.schema]
 })
+
+sampleRecipes.forEach(function (recipe) {
+  recipe.reviews = sampleReviews
+})
