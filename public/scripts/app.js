@@ -6,6 +6,17 @@ $(document).ready(function () {
     console.log('testing')
     getRecipes()
   })
+
+  $.ajax({
+    method: 'GET',
+    url: '/api/recipes',
+    success: function (recipes){
+      recipes.forEach(renderRecipe)
+    },
+    error: function(err){
+      throw err
+    }
+  })
 })
 
 function getRecipes () {
@@ -40,7 +51,7 @@ function renderRecipe(recipe) {
         <div class='panel panel-default'>
           <div class='panel-body'>
 
-          // begin recipe internal row
+           <!-- begin recipe internal row -->
             <div class='row'>
               <div class='col-md-3 col-xs-12 thumbnail recipe-image'>
                 <img src='${recipe.imgUrl}' alt='recipe image'>
@@ -55,7 +66,7 @@ function renderRecipe(recipe) {
 
                 </ul>
               </div>
-              // end of recipe internal row
+              <!-- end of recipe internal row -->
 
               <div class='panel-footer'>
               </div>
@@ -64,7 +75,7 @@ function renderRecipe(recipe) {
           </div>
         </div>
       </div>
-      // end of one recipe
+      <!-- end of one recipe -->
     `)
     $('#recipes').prepend(recipeHtml)
 }

@@ -23,6 +23,7 @@ app.get('/', function homepage (req, res) {
 // routes
 app.get('/api', controllers.api.index)
 
+app.get('/api/recipes', controllers.recipe.recipesIndex)
 /**********
  * SERVER *
  **********/
