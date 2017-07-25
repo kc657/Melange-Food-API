@@ -1,5 +1,5 @@
 let mongoose = require('mongoose')
-mongoose.connect('mongod://localhost/recipe')
+mongoose.connect('mongodb://localhost/recipe')
 
 let Recipe = require('./recipe.js')
 let Review = require('./review.js')
