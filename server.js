@@ -29,7 +29,3 @@ app.get('/api', controllers.api.index)
 app.listen(process.env.PORT || 3000, function () {
   console.log('Express server is up and running on http://localhost:3000/')
 })
-//
-// app.listen(80, function () {
-//   console.log('CORS-enabled web server listening on port 80')
-// })
