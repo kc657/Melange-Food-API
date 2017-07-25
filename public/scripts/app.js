@@ -21,8 +21,8 @@ function getRecipes () {
 
 // sample search https://api.edamam.com/search?q=chicken&app_id=e7f27eb3&app_key=1a416555863a852b35cd1701d9a4c0c1
 
-function onSuccess () {
-  console.log('hi')
+function onSuccess (dataResponse) {
+  console.log(dataResponse);
 }
 function onError () {
   console.log('bye')

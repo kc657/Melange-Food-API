@@ -31,7 +31,7 @@ Food Search API provides the hungry user with a tool to find recipes! Integratio
 
 ### Sprint 0
 
-- planning deliverables and sprint setup
+- Planning deliverables and sprint setup
 
 ### Sprint 1
 
@@ -52,5 +52,6 @@ Food Search API provides the hungry user with a tool to find recipes! Integratio
 ### Sprint 5
 
 - Edit and delete reviews
+
 
 ## Planned Features
