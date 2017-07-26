@@ -1,32 +1,18 @@
-let db = require('../models')
-
-let sampleRecipes = [
-  {
-    name: 'Chicken Fried Rice',
-    url: 'www.google.com',
-    imgUrl: 'https://www.gimmesomeoven.com/wp-content/uploads/2014/03/Fried-Rice-7.jpg',
-    publisher: 'Kevin\'s Kitchen',
-    yield: 2,
-    calories: 800
-  // reviews: [Review.schema]
-  },
-  {
-    name: 'Chicken Fried Rice 2',
-    url: 'www.google.com',
-    imgUrl: 'https://www.gimmesomeoven.com/wp-content/uploads/2014/03/Fried-Rice-7.jpg',
-    publisher: 'Mary\'s Kitchen',
-    yield: 3,
-    calories: 1100
-// reviews: [Review.schema]
-  }
-]
+const db = require('../models')
+const bodyParser = require('body-parser')
 
 function recipesIndex (req, res) {
-  db.Recipe.find({}, function(err, allRecipes) {
+  db.Recipe.find({}, function (err, allRecipes) {
     res.json(allRecipes)
   })
 }
 
+function recipesCreate (req, res) {
+  console.log('hitting recipes create controller')
+  console.log()
+}
+
 module.exports = {
-  recipesIndex: recipesIndex
+  recipesIndex: recipesIndex,
+  recipesCreate: recipesCreate
 }
