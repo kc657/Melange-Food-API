@@ -3,7 +3,6 @@ console.log('Sanity Check')
 $(document).ready(function () {
   $('#submit-ingredients').on('submit', function (doc) {
     doc.preventDefault()
-    console.log('hi')
     getRecipes()
   })
 
@@ -11,7 +10,7 @@ $(document).ready(function () {
     method: 'GET',
     url: '/api/recipes',
     success: function (recipes) {
-      recipes.forEach(renderRecipe)
+      recipes.forEach(renderSeedRecipes)
     },
     error: function (err) {
       throw err
@@ -26,11 +25,9 @@ function getRecipes () {
     data: $('form').serialize(),
     dataType: 'json',
     success: renderEdamamRecipes,
-    error: getRecipesError
+    error: getApiRecipesError
   })
 }
-
-// sample search https://api.edamam.com/search?q=chicken&app_id=e7f27eb3&app_key=1a416555863a852b35cd1701d9a4c0c1
 
 function renderEdamamRecipes (recipes) {
   let edamamName = recipes.hits[0].recipe.label
@@ -40,7 +37,6 @@ function renderEdamamRecipes (recipes) {
   let edamamSource = recipes.hits[0].recipe.source
   let edamamUrl = recipes.hits[0].recipe.url
   let edamamImage = recipes.hits[0].recipe.image
-  console.log(edamamUrl)
   let recipeHtml = (`
       <div class='row recipe'>
         <div class='col-md-10 col-md-offset-1'>
@@ -85,12 +81,12 @@ function renderEdamamRecipes (recipes) {
   $('#recipes').prepend(recipeHtml)
 }
 
-function getRecipesError () {
+function getApiRecipesError () {
   console.log('Get Recipes Error')
 }
 
-// takes an album and renders it on the page
-function renderRecipe (recipe) {
+// takes seed recipes and renders it on the page
+function renderSeedRecipes (recipe) {
   let ingredientList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
     <div class='row recipe'>
@@ -137,14 +133,11 @@ function renderRecipe (recipe) {
 }
 
 function renderIngredient (ingredients) {
-  // console.log('ingredient rendering', ingredients)
   let ingredientHtml = ''
   ingredients.forEach(function (e) {
     ingredientHtml += (`
         <li class='ingredient' id='ingredient'>${e}</li>
       `)
   })
-    // $('#ingredient').append(ingredientHtml)
-  // console.log(ingredientHtml)
   return ingredientHtml
 }
