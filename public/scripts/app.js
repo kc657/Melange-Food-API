@@ -83,6 +83,7 @@ function renderEdamamRecipes (recipes) {
                 <!-- end of recipe internal row -->
 
                 <div class='panel-footer'>
+                <button type='button' class='btn btn-primary delete-recipe'>Delete Recipe</button>
                 </div>
 
               </div>
@@ -134,6 +135,7 @@ function renderSeedRecipes (recipe) {
               <!-- end of recipe internal row -->
 
               <div class='panel-footer'>
+              <button type='button' class='btn btn-primary delete-recipe'>Delete Recipe</button>
               </div>
 
             </div>
