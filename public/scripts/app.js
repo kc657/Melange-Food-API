@@ -32,11 +32,12 @@ function getRecipes () {
 function renderEdamamRecipes (recipes) {
   let edamamName = recipes.hits[0].recipe.label
   let edamamCalories = recipes.hits[0].recipe.calories
-  let edamamIngredients = recipes.hits[0].recipe.ingredientLines
   let edamamHealthLabels = recipes.hits[0].recipe.healthLabels
   let edamamSource = recipes.hits[0].recipe.source
   let edamamUrl = recipes.hits[0].recipe.url
   let edamamImage = recipes.hits[0].recipe.image
+  let edamamIngredients = recipes.hits[0].recipe.ingredientLines
+  let ingredientList = renderIngredient(edamamIngredients)
   let recipeHtml = (`
       <div class='row recipe'>
         <div class='col-md-10 col-md-offset-1'>
@@ -62,7 +63,7 @@ function renderEdamamRecipes (recipes) {
 
                     <li class='list-group-item'>
                       <h4 class='inline-header'>Ingredients:</h4>
-                      <ul>${edamamIngredients}</ul>
+                      <ul>${ingredientList}</ul>
                     </li>
 
                   </ul>
