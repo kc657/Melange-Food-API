@@ -9,6 +9,7 @@ let RecipeSchema = new Schema({
   publisher: String,
   yield: Number,
   calories: Number,
+  ingredients: [String],
   reviews: [Review.schema]
 })
 

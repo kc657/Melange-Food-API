@@ -1,0 +1,21 @@
+.jumbotron {
+  background-image: url(/images/croissantsBaking.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #EEE;
+}
+
+.jumbotron .container {
+  height: 450px;
+}
+
+.inline-header {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: 12px;
+}
+
+h1 {
+  text-shadow: 2px 2px 2px #FAA916 !important;
+}

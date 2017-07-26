@@ -45,6 +45,8 @@ function onError () {
 //takes an album and renders it on the page
 function renderRecipe(recipe) {
   console.log('recipe rendering', recipe)
+  let ingredientList = renderIngredient(recipe.ingredients);
+  console.log(ingredientList);
   let recipeHtml = (`
     <div class='row recipe'>
       <div class='col-md-10 col-md-offset-1'>
@@ -63,6 +65,10 @@ function renderRecipe(recipe) {
                     <h4 class='inline-header'>Recipe Name:</h4>
                     <span class='recipe-name'>${recipe.name}</span>
                   </li>
+                  <li class='list-group-item'>
+                    <h4 class='inline-header'>Ingredients:</h4>
+                    <ul>${ingredientList}</ul>
+                  </li>
 
                 </ul>
               </div>
@@ -78,4 +84,17 @@ function renderRecipe(recipe) {
       <!-- end of one recipe -->
     `)
     $('#recipes').prepend(recipeHtml)
+}
+
+function renderIngredient(ingredients) {
+  console.log('ingredient rendering', ingredients)
+  let ingredientHtml = '';
+  ingredients.forEach(function(e){
+    ingredientHtml += (`
+        <li class='ingredient' id='ingredient'>${e}</li>
+      `)
+  })
+    // $('#ingredient').append(ingredientHtml)
+    console.log(ingredientHtml);
+    return ingredientHtml;
 }
