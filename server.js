@@ -24,6 +24,7 @@ app.get('/api/recipes', controllers.recipe.recipesIndex)
 
 app.post('/api/recipes', controllers.recipe.recipesCreate)
 
+app.delete('/api/recipes/:recipeId', controllers.recipe.recipesDestroy)
 
 /**********
  * SERVER *

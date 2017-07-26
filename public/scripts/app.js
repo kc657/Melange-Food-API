@@ -21,13 +21,24 @@ $(document).ready(function () {
 
 })
 
+
 //when a delete button for a specific recipe is clicked
 function handleDeleteRecipeClick(e) {
   let recipeId= $(this).parents('.recipe').data('recipe-id')
   console.log(`Try and delete me now ${recipeId}`)
+  $.ajax({
+    url: '/api/recipes/' + recipeId,
+    method: 'DELETE',
+    success: handleDeleteRecipeSuccess
+  })
 }
 
-
+//callback function after DELTE /api/albums/:id
+function handleDeleteRecipeSuccess(data) {
+  let deletedRecipeId = data._id;
+  console.log(`you are deleting ${deletedRecipeId}`);
+  $('div[data-recipe-id=' + deletedRecipeId + ']').remove();
+}
 
 
 
