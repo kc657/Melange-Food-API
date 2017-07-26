@@ -7,6 +7,13 @@ function recipesIndex (req, res) {
   })
 }
 
+function show (req, res) {
+  db.Recipe.findById(req.params.recipeId, function (err, foundRecipe) {
+    if (err) {console.log('Cannot find the recipe')}
+    res.json(foundRecipe)
+  })
+}
+
 function recipesCreate (req, res) {
   const newRecipe = req.body
   db.Recipe.create(newRecipe, function(err, recipe) {
@@ -18,5 +25,6 @@ function recipesCreate (req, res) {
 
 module.exports = {
   recipesIndex: recipesIndex,
-  recipesCreate: recipesCreate
+  recipesCreate: recipesCreate,
+  show: show
 }
