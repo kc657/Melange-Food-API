@@ -83,7 +83,6 @@ db.Recipe.remove({}, function(err, recipes){
   db.Recipe.create(sampleRecipes, function(err, recipes){
     // code in here runs after all albums are created
     if (err) { return console.log('ERROR', err); }
-    console.log("all recipes:", recipes);
     process.exit();
   });
 });

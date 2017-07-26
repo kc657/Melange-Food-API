@@ -10,10 +10,10 @@ $(document).ready(function () {
   $.ajax({
     method: 'GET',
     url: '/api/recipes',
-    success: function (recipes){
+    success: function (recipes) {
       recipes.forEach(renderRecipe)
     },
-    error: function(err){
+    error: function (err) {
       throw err
     }
   })
@@ -26,27 +26,34 @@ function getRecipes () {
     data: $('form').serialize(),
     dataType: 'json',
     success: renderMultipleRecipes,
-    error: onError
+    error: getRecipesError
   })
 }
 
 // sample search https://api.edamam.com/search?q=chicken&app_id=e7f27eb3&app_key=1a416555863a852b35cd1701d9a4c0c1
 
 function renderMultipleRecipes (recipes) {
-  recipes.forEach(function(recipe){
-    renderRecipe(recipe)
-  })
+  let edamamName = recipes.hits[0].recipe.label
+  let edamamCalories = recipes.hits[0].recipe.calories
+  let edamamIngredients = recipes.hits[0].recipe.ingredientLines
+  let edamamHealthLabels = recipes.hits[0].recipe.healthLabels
+  let edamamSource = recipes.hits[0].recipe.source
+  let edamamUrl = recipes.hits[0].recipe.url
+  let edamamImage = recipes.hits[0].recipe.image
+  // recipes.forEach(function(recipe){
+  //   renderRecipe(recipe)
+  // })
 }
 
-function onError () {
-  console.log('bye')
+function getRecipesError () {
+  console.log('Get Recipes Error')
 }
 
-//takes an album and renders it on the page
-function renderRecipe(recipe) {
-  console.log('recipe rendering', recipe)
-  let ingredientList = renderIngredient(recipe.ingredients);
-  console.log(ingredientList);
+// takes an album and renders it on the page
+function renderRecipe (recipe) {
+  let ingredientList = renderIngredient(recipe.ingredients)
+  // console.log('recipe rendering', recipe)
+  // console.log(ingredientList)
   let recipeHtml = (`
     <div class='row recipe'>
       <div class='col-md-10 col-md-offset-1'>
@@ -88,18 +95,18 @@ function renderRecipe(recipe) {
       </div>
       <!-- end of one recipe -->
     `)
-    $('#recipes').prepend(recipeHtml)
+  $('#recipes').prepend(recipeHtml)
 }
 
-function renderIngredient(ingredients) {
-  console.log('ingredient rendering', ingredients)
-  let ingredientHtml = '';
-  ingredients.forEach(function(e){
+function renderIngredient (ingredients) {
+  // console.log('ingredient rendering', ingredients)
+  let ingredientHtml = ''
+  ingredients.forEach(function (e) {
     ingredientHtml += (`
         <li class='ingredient' id='ingredient'>${e}</li>
       `)
   })
     // $('#ingredient').append(ingredientHtml)
-    console.log(ingredientHtml);
-    return ingredientHtml;
+  // console.log(ingredientHtml)
+  return ingredientHtml
 }
