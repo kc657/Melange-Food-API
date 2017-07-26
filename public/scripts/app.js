@@ -3,17 +3,8 @@ console.log('Sanity Check')
 $(document).ready(function () {
   $('#submit-ingredients').on('submit', function (doc) {
     doc.preventDefault()
-    $.ajax({
-      method: 'POST',
-      url: '/api/recipes',
-      success: ,
-      error: function () {
-        console.log('Recipe posting failed');
-      }
-    })
     getRecipes()
   })
-
   $.ajax({
     method: 'GET',
     url: '/api/recipes',
@@ -32,12 +23,12 @@ function getRecipes () {
     url: 'https://api.edamam.com/search',
     data: $('form').serialize(),
     dataType: 'json',
-    success: renderEdamamRecipes,
+    success: postEdamamRecipes,
     error: getApiRecipesError
   })
 }
 
-function renderEdamamRecipes (recipes) {
+function postEdamamRecipes (recipes) {
   let edamamName = recipes.hits[0].recipe.label
   let edamamCalories = recipes.hits[0].recipe.calories
   let edamamHealthLabels = recipes.hits[0].recipe.healthLabels
@@ -46,6 +37,19 @@ function renderEdamamRecipes (recipes) {
   let edamamImage = recipes.hits[0].recipe.image
   let edamamIngredients = recipes.hits[0].recipe.ingredientLines
   let ingredientList = renderIngredient(edamamIngredients)
+
+  $.ajax({
+    method: 'POST',
+    url: '/api/recipes',
+    dataType: edamamName,
+    success: renderEdamamRecipes,
+    error: function () {
+      console.log('Recipe posting failed')
+    }
+  })
+}
+
+function renderEdamamRecipes (recipes) {
   let recipeHtml = (`
       <div class='row recipe'>
         <div class='col-md-10 col-md-offset-1'>
