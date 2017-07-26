@@ -15,7 +15,17 @@ $(document).ready(function () {
       throw err
     }
   })
+
+  //delete recipe when its delete button is clicked
+  $('#reipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
+
 })
+
+
+
+
+
+
 
 function getRecipes () {
   $.ajax({
