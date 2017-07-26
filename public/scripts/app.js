@@ -65,6 +65,11 @@ function renderRecipe(recipe) {
                     <h4 class='inline-header'>Recipe Name:</h4>
                     <span class='recipe-name'>${recipe.name}</span>
                   </li>
+
+                  <li class='list-group-item'>
+                    <a href='${recipe.sourceUrl}'> via ${recipe.source}</a>
+                  </li>
+
                   <li class='list-group-item'>
                     <h4 class='inline-header'>Ingredients:</h4>
                     <ul>${ingredientList}</ul>
