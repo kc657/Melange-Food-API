@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
-
+ 
 
 // serve static :files from public folder
 app.use(express.static(__dirname + '/public'))
@@ -13,7 +13,6 @@ const controllers = require('./controllers')
 
 // database
 const db = require('./models')
-
 
 // homepage route
 app.get('/', function homepage (req, res) {
