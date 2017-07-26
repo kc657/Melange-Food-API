@@ -33,13 +33,13 @@ function postEdamamRecipes (recipes) {
   // let formatIngredients = renderIngredient(edamamIngredients)
   // console.log(formatIngredients);
   let edamamApiRecipe = {
-  name: recipes.hits[0].recipe.label,
-  calories: recipes.hits[0].recipe.calories,
-  healthLabels: recipes.hits[0].recipe.healthLabels,
-  source:recipes.hits[0].recipe.source,
-  sourceUrl: recipes.hits[0].recipe.url,
-  imgUrl: recipes.hits[0].recipe.image,
-  ingredients: recipes.hits[0].recipe.ingredientLines
+    name: recipes.hits[0].recipe.label,
+    calories: recipes.hits[0].recipe.calories,
+    healthLabels: recipes.hits[0].recipe.healthLabels,
+    source: recipes.hits[0].recipe.source,
+    sourceUrl: recipes.hits[0].recipe.url,
+    imgUrl: recipes.hits[0].recipe.image,
+    ingredients: recipes.hits[0].recipe.ingredientLines
   }
   $.ajax({
     method: 'POST',
