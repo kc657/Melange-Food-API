@@ -17,10 +17,15 @@ $(document).ready(function () {
   })
 
   //delete recipe when its delete button is clicked
-  $('#reipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
+  $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
 
 })
 
+//when a delete button for a specific recipe is clicked
+function handleDeleteRecipeClick(e) {
+  let recipeId= $(this).parents('.recipe').data('recipe-id')
+  console.log(`Try and delete me now ${recipeId}`)
+}
 
 
 
@@ -113,7 +118,7 @@ function getApiRecipesError () {
 function renderSeedRecipes (recipe) {
   let ingredientList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
-    <div class='row recipe'>
+    <div class='row recipe' data-recipe-id='${recipe._id}'>
       <div class='col-md-10 col-md-offset-1'>
         <div class='panel panel-default'>
           <div class='panel-body'>
