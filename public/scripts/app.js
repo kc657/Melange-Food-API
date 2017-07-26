@@ -3,6 +3,14 @@ console.log('Sanity Check')
 $(document).ready(function () {
   $('#submit-ingredients').on('submit', function (doc) {
     doc.preventDefault()
+    $.ajax({
+      method: 'POST',
+      url: '/api/recipes',
+      success: ,
+      error: function () {
+        console.log('Recipe posting failed');
+      }
+    })
     getRecipes()
   })
 

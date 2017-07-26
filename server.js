@@ -24,6 +24,8 @@ app.get('/api', controllers.api.index)
 
 app.get('/api/recipes', controllers.recipe.recipesIndex)
 
+app.post('/api/recipes', controllers.recipe.recipesCreate)
+
 /**********
  * SERVER *
  **********/
