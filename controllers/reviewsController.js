@@ -7,10 +7,9 @@ function reviewsIndex (req, res) {
 
 function reviewsCreate (req, res ) {
   let newReview = req.body
-  db.Recipe.findById(req.params._id, function (recipe) {
-
+  db.Recipe.findById(req.params.currentRecipeId, function (err, foundRecipe) {
+    console.log(foundRecipe);
   })
-
 }
 
 module.exports = {
