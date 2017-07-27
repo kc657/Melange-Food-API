@@ -15,7 +15,33 @@ $(document).ready(function () {
       throw err
     }
   })
+
+  //delete recipe when its delete button is clicked
+  $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
+
 })
+
+
+//when a delete button for a specific recipe is clicked
+function handleDeleteRecipeClick(e) {
+  let recipeId= $(this).parents('.recipe').data('recipe-id')
+  console.log(`Try and delete me now ${recipeId}`)
+  $.ajax({
+    url: '/api/recipes/' + recipeId,
+    method: 'DELETE',
+    success: handleDeleteRecipeSuccess
+  })
+}
+
+//callback function after DELTE /api/albums/:id
+function handleDeleteRecipeSuccess(data) {
+  let deletedRecipeId = data._id;
+  console.log(`you are deleting ${deletedRecipeId}`);
+  $('div[data-recipe-id=' + deletedRecipeId + ']').remove();
+}
+
+
+
 
 function getRecipes () {
   $.ajax({
@@ -106,7 +132,7 @@ function getApiRecipesError () {
 function renderSeedRecipes (recipe) {
   let ingredientList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
-    <div class='row recipe'>
+    <div class='row recipe' data-recipe-id='${recipe._id}'>
       <div class='col-md-10 col-md-offset-1'>
         <div class='panel panel-default'>
           <div class='panel-body'>
