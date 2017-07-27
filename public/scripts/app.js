@@ -7,6 +7,17 @@ $(document).ready(function () {
     // getRecipes()
   })
 
+  $.ajax({
+    method: 'GET',
+    url: '/api/recipes',
+    success: function (recipes) {
+      recipes.forEach(renderSeedRecipes)
+    },
+    error: function (err) {
+      throw err
+    }
+  })
+
   $('#searchRecipe').on('submit', function (e) {
     e.preventDefault()
     getRecipes()
@@ -19,25 +30,13 @@ $(document).ready(function () {
     $('#reviewModal').modal('show')
   })
 
-  $.ajax({
-    method: 'GET',
-    url: '/api/recipes',
-    success: function (recipes) {
-      recipes.forEach(renderSeedRecipes)
-    },
-    error: function (err) {
-      throw err
-    }
-  })
-
-
-  //catch and handle the click on add review button
+  // catch and handle the click on add review button
   $('#recipes').on('click', '.add-review', handleAddReviewClick)
 
   // //save review modal save button
-  // $('#saveReview').on('click', handleNewReviewSubmit)
+  $('#saveReview').on('click', handleNewReviewSubmit)
 
-  //delete recipe when its delete button is clicked
+  // delete recipe when its delete button is clicked
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
 
   // transparent modal addClass functions
@@ -222,10 +221,13 @@ function renderIngredient (ingredients) {
   return ingredientHtml
 }
 
-function handleAddReviewClick(e) {
-  console.log('add-review clicked!')
+function handleAddReviewClick (e) {
   var currentRecipeId = $(this).closest('.recipe').data('recipe-id')
-  console.log('id',currentRecipeId);
-  $('#reviewModal').data('recipe-id', currentRecipeId);
-  $('#reviewModal').modal();
+  console.log('id', currentRecipeId)
+  $('#reviewModal').data('recipe-id', currentRecipeId)
+  $('#reviewModal').modal()
+}
+
+function handleNewReviewSubmit (e) {
+  console.log('save review working');
 }
