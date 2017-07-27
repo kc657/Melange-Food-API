@@ -53,20 +53,15 @@
             <div class='form-group'>
               <label class='col-md-4 control-label' for='reviewerName'>Your Name</label>
               <div class='col-md-4'>
-                <input id='reviewerName' name='reviewerName' type='text' placeholder='' class='form-control input-md'/>
+                <input id='reviewerName' name='reviewerName' type='text' placeholder='' class='form-control input-md' />
               </div>
             </div>
 
             <!-- radio button input -->
             <div class='form-group'>
-              <label class='col-md-4 control-label' for='wouldRecommend'>Recommend This Recipe?</label>
-              <div class='col-md-4' id='wouldRecommend'>
-                <label class='radio-inline'>
-                  <input id='wouldRecommend1' name='wouldRecommend' type='radio' value='Yes'/>Yes
-                </label>
-                <labe class='radio-inline'>
-                  <input id='wouldRecommend2' name='wouldRecommend' type='radio' value='No' class='form'/>No
-                </label>
+              <label class='col-md-4 control-label' for='wouldRecommend'>Recommend This Recipe? Please rate it on a scale of 1 to 10</label>
+              <div class='col-md-4'>
+                <input id='recommendationRating' name='recommendation' type='number' class='form-control input-md' placeholder='1 - 10' min='1' max='10' />
               </div>
             </div>
 
@@ -74,7 +69,7 @@
 
         </div>
         <div class='modal-footer'>
-          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+          <button type='button' class='btn btn-default' data-dismiss='modal' id='closeModal'>Close</button>
           <button type='button' class='btn btn-primary' id='saveReview'>Save Review</button>
         </div>
       </div>

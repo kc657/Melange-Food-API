@@ -222,15 +222,12 @@ function renderIngredient (ingredients) {
 }
 
 function handleAddReviewClick (e) {
-  var currentRecipeId = $(this).closest('.recipe').data('recipe-id')
+  const currentRecipeId = $(this).closest('.recipe').data('recipe-id')
   console.log('id', currentRecipeId)
   $('#reviewModal').data('recipe-id', currentRecipeId)
   $('#reviewModal').modal()
 }
 
 function handleNewReviewSubmit (e) {
-  let submitReview = $('#reviewerName').val()
-  let wouldRecommend = $('#wouldRecommend1').val()
-  let wouldNotRecommend = $('#wouldRecommend2').val()
-  console.log(wouldRecommend);
+  const currentRecipeId = $(this).closest('.recipe').data('recipe-id')
 }
