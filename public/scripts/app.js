@@ -229,5 +229,8 @@ function handleAddReviewClick (e) {
 }
 
 function handleNewReviewSubmit (e) {
-  console.log('save review working');
+  let submitReview = $('#reviewerName').val()
+  let wouldRecommend = $('#wouldRecommend1').val()
+  let wouldNotRecommend = $('#wouldRecommend2').val()
+  console.log(wouldRecommend);
 }
