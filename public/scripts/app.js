@@ -195,7 +195,7 @@ function renderIngredient (ingredients) {
   return ingredientHtml
 }
 
-function handleAddSongClick(e) {
+function handleAddReviewClick(e) {
   console.log('add-review clicked!')
   var currentRecipeId = $(this).closest('.recipe').data('recipe-id')
   console.log('id',currentRecipeId);
