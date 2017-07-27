@@ -4,7 +4,6 @@ $(document).ready(function () {
   $('#search-ingredients').on('click', function (e) {
     e.preventDefault()
     $('#searchModal').modal('show')
-    // getRecipes()
   })
 
   $.ajax({
@@ -30,7 +29,12 @@ $(document).ready(function () {
   })
 
   // catch and handle the click on add review button
-  $('#recipes').on('click', '.add-review', handleAddReviewClick)
+  $('#recipes').on('click', '.add-review', function handleAddReviewClick (e) {
+    const recipe_id = $(this).closest('.recipe').data('recipe-id')
+    $('#reviewModal').data('recipe-id', recipe_id)
+    $('#reviewModal').modal()
+  }
+)
 
   // //save review modal save button
   $('#saveReview').on('click', handleNewReviewSubmit)
@@ -47,7 +51,7 @@ $(document).ready(function () {
   $('.modal-transparent').on('hidden.bs.modal', function () {
     $('.modal-backdrop').addClass('modal-backdrop-transparent')
   })
-})
+}) //end of document.ready//
 
 // when a delete button for a specific recipe is clicked
 function handleDeleteRecipeClick (e) {
@@ -55,27 +59,47 @@ function handleDeleteRecipeClick (e) {
   $.ajax({
     url: '/api/recipes/' + recipeId,
     method: 'DELETE',
-    success: handleDeleteRecipeSuccess
+    success: function handleDeleteRecipeSuccess (data) {
+      let deletedRecipeId = data._id
+      $('div[data-recipe-id=' + deletedRecipeId + ']').remove()
+    }
   })
 }
 
-// callback function after DELTE /api/albums/:id
-function handleDeleteRecipeSuccess (data) {
-  let deletedRecipeId = data._id
-  $('div[data-recipe-id=' + deletedRecipeId + ']').remove()
-}
-
+// getting recipe from edamam API
 function getRecipes () {
   $.ajax({
     method: 'GET',
     url: 'https://api.edamam.com/search',
     data: $('form').serialize(),
     dataType: 'json',
-    success: postEdamamRecipes,
-    error: getApiRecipesError
+    success: function postEdamamRecipes (recipes) {
+      let edamamApiRecipe = {
+        name: recipes.hits[0].recipe.label,
+        calories: recipes.hits[0].recipe.calories,
+        healthLabels: recipes.hits[0].recipe.healthLabels,
+        source: recipes.hits[0].recipe.source,
+        sourceUrl: recipes.hits[0].recipe.url,
+        imgUrl: recipes.hits[0].recipe.image,
+        ingredients: recipes.hits[0].recipe.ingredientLines
+      }
+      $.ajax({
+        method: 'POST',
+        url: '/api/recipes',
+        data: edamamApiRecipe,
+        success: renderEdamamRecipes,
+        error: function () {
+          console.log('Recipe posting failed')
+        }
+      })
+    },
+    error: function getApiRecipesError () {
+      console.log('Get Recipes Error')
+    }
   })
 }
 
+// posting recipe from API onto database
 function postEdamamRecipes (recipes) {
   let edamamApiRecipe = {
     name: recipes.hits[0].recipe.label,
@@ -96,6 +120,7 @@ function postEdamamRecipes (recipes) {
     }
   })
 }
+
 
 function renderEdamamRecipes (recipe) {
   let recipeHtml = (`
@@ -127,7 +152,7 @@ function renderEdamamRecipes (recipe) {
                     </li>
                     <li class='list-group-item'>
                       <h4 class='inline-header'>Reviews:</h4>
-                      <ul>R${recipe.reviews}</ul>
+                      <ul>${recipe.reviews}</ul>
                     </li>
                   </ul>
                 </div>
@@ -147,17 +172,11 @@ function renderEdamamRecipes (recipe) {
   $('#recipes').prepend(recipeHtml)
 }
 
-function getApiRecipesError () {
-  console.log('Get Recipes Error')
-}
-
-function renderReview (review) {
-  return (`<span> ${review.author} ${review.wouldRecommend} </span>`)
-}
-
 // takes seed recipes and renders it on the page
 function renderSeedRecipes (recipe) {
-  let seedReview = recipe.reviews.map(renderReview)
+  let seedReview = recipe.reviews.map(function renderReview (review) {
+    return (`<span> ${review.author} ${review.wouldRecommend} </span>`)
+  })
   let ingredientList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
     <div class='row recipe' data-recipe-id='${recipe._id}'>
@@ -220,12 +239,6 @@ function renderIngredient (ingredients) {
   return ingredientHtml
 }
 
-function handleAddReviewClick (e) {
-  const recipe_id = $(this).closest('.recipe').data('recipe-id')
-  $('#reviewModal').data('recipe-id', recipe_id)
-  $('#reviewModal').modal()
-}
-
 function handleNewReviewSubmit (e) {
   const recipe_id = $('#reviewModal').data('recipe-id')
   let reviewerName = $('#reviewerName').val()
@@ -237,15 +250,19 @@ function handleNewReviewSubmit (e) {
       author: reviewerName,
       wouldRecommend: reviewRating
     },
-    success: savedNewReview,
-    error: failedNewReview
+    success: function (review) {
+      console.log('Review added!')
+      $.ajax({
+        method: 'GET',
+        url: '/api/recipes/' + recipe_id,
+        success: function (recipe) {
+          $(`.recipe[data-recipe-id='${recipe_id}']`).remove()
+          renderEdamamRecipes(recipe)
+        }
+      })
+    },
+    error: function failedNewReview (e) {
+      console.log('saved new review not working')
+    }
   })
-}
-
-function savedNewReview (e) {
-  console.log('saved new review working')
-}
-
-function failedNewReview (e) {
-  console.log('saved new review not working')
 }

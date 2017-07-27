@@ -16,7 +16,7 @@ function reviewsCreate (req, res) {
       wouldRecommend: req.body.wouldRecommend
     }, function (err, review) {
       if (err) return res.status(500).json(err)
-      console.log('hi there');
+      console.log('hi there')
       recipe.reviews.push(review)
       recipe.save()
       res.json(review)
