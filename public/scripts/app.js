@@ -23,7 +23,6 @@ $(document).ready(function () {
 // when a delete button for a specific recipe is clicked
 function handleDeleteRecipeClick (e) {
   let recipeId = $(this).parents('.recipe').data('recipe-id')
-  console.log(`Try and delete me now ${recipeId}`)
   $.ajax({
     url: '/api/recipes/' + recipeId,
     method: 'DELETE',
@@ -34,7 +33,6 @@ function handleDeleteRecipeClick (e) {
 // callback function after DELTE /api/albums/:id
 function handleDeleteRecipeSuccess (data) {
   let deletedRecipeId = data._id
-  console.log(`you are deleting ${deletedRecipeId}`)
   $('div[data-recipe-id=' + deletedRecipeId + ']').remove()
 }
 
@@ -50,9 +48,6 @@ function getRecipes () {
 }
 
 function postEdamamRecipes (recipes) {
-  // let edamamIngredients = recipes.hits[0].recipe.ingredientLines
-  // let formatIngredients = renderIngredient(edamamIngredients)
-  // console.log(formatIngredients);
   let edamamApiRecipe = {
     name: recipes.hits[0].recipe.label,
     calories: recipes.hits[0].recipe.calories,
