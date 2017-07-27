@@ -1,10 +1,24 @@
 console.log('Sanity Check')
 
 $(document).ready(function () {
-  $('#submit-ingredients').on('submit', function (doc) {
-    doc.preventDefault()
+  $('#search-ingredients').on('click', function (e) {
+    e.preventDefault()
+    $('#searchModal').modal('show')
+    // getRecipes()
+  })
+
+  $('#searchRecipe').on('submit', function (e) {
+    e.preventDefault()
     getRecipes()
   })
+
+  $('#recipes').on('click', '.add-review', function (e) {
+    let id = $(this).closest('.recipe').data('recipe-id')
+    console.log(id)
+    $('#reviewModal').data('recipe-id', id)
+    $('#reviewModal').modal('show')
+  })
+
   $.ajax({
     method: 'GET',
     url: '/api/recipes',
@@ -26,13 +40,20 @@ $(document).ready(function () {
   //delete recipe when its delete button is clicked
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
 
+  // transparent modal addClass functions
+  $('.modal-transparent').on('show.bs.modal', function () {
+    setTimeout(function () {
+      $('.modal-backdrop').addClass('modal-backdrop-transparent')
+    }, 0)
+  })
+  $('.modal-transparent').on('hidden.bs.modal', function () {
+    $('.modal-backdrop').addClass('modal-backdrop-transparent')
+  })
 })
 
-
-//when a delete button for a specific recipe is clicked
-function handleDeleteRecipeClick(e) {
-  let recipeId= $(this).parents('.recipe').data('recipe-id')
-  console.log(`Try and delete me now ${recipeId}`)
+// when a delete button for a specific recipe is clicked
+function handleDeleteRecipeClick (e) {
+  let recipeId = $(this).parents('.recipe').data('recipe-id')
   $.ajax({
     url: '/api/recipes/' + recipeId,
     method: 'DELETE',
@@ -40,15 +61,11 @@ function handleDeleteRecipeClick(e) {
   })
 }
 
-//callback function after DELTE /api/albums/:id
-function handleDeleteRecipeSuccess(data) {
-  let deletedRecipeId = data._id;
-  console.log(`you are deleting ${deletedRecipeId}`);
-  $('div[data-recipe-id=' + deletedRecipeId + ']').remove();
+// callback function after DELTE /api/albums/:id
+function handleDeleteRecipeSuccess (data) {
+  let deletedRecipeId = data._id
+  $('div[data-recipe-id=' + deletedRecipeId + ']').remove()
 }
-
-
-
 
 function getRecipes () {
   $.ajax({
@@ -62,9 +79,6 @@ function getRecipes () {
 }
 
 function postEdamamRecipes (recipes) {
-  // let edamamIngredients = recipes.hits[0].recipe.ingredientLines
-  // let formatIngredients = renderIngredient(edamamIngredients)
-  // console.log(formatIngredients);
   let edamamApiRecipe = {
     name: recipes.hits[0].recipe.label,
     calories: recipes.hits[0].recipe.calories,
@@ -87,7 +101,7 @@ function postEdamamRecipes (recipes) {
 
 function renderEdamamRecipes (recipe) {
   let recipeHtml = (`
-      <div class='row recipe'>
+      <div class='row recipe' data-recipe-id='${recipe._id}'>
         <div class='col-md-10 col-md-offset-1'>
           <div class='panel panel-default'>
             <div class='panel-body'>
@@ -113,7 +127,10 @@ function renderEdamamRecipes (recipe) {
                       <h4 class='inline-header'>Ingredients:</h4>
                       <ul>${recipe.ingredients}</ul>
                     </li>
-
+                    <li class='list-group-item'>
+                      <h4 class='inline-header'>Reviews:</h4>
+                      <ul>R${recipe.reviews}</ul>
+                    </li>
                   </ul>
                 </div>
                 <!-- end of recipe internal row -->
@@ -136,8 +153,13 @@ function getApiRecipesError () {
   console.log('Get Recipes Error')
 }
 
+function renderReview (review) {
+  return (`<span> ${review.author} ${review.wouldRecommend} </span>`)
+}
+
 // takes seed recipes and renders it on the page
 function renderSeedRecipes (recipe) {
+  recipe.reviewsHtml = recipe.reviews.map(renderReview)
   let ingredientList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
     <div class='row recipe' data-recipe-id='${recipe._id}'>
@@ -165,6 +187,11 @@ function renderSeedRecipes (recipe) {
                   <li class='list-group-item'>
                     <h4 class='inline-header'>Ingredients:</h4>
                     <ul>${ingredientList}</ul>
+                  </li>
+
+                  <li class='list-group-item'>
+                    <h4 class='inline-header'>Reviews:</h4>
+                    <ul>${recipe.reviewsHtml}</ul>
                   </li>
 
                 </ul>

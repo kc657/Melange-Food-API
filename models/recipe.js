@@ -3,7 +3,6 @@ const Schema = mongoose.Schema
 const Review = require('./review.js')
 
 const RecipeSchema = new Schema({
-  _id: Number,
   name: String,
   url: String,
   imgUrl: String,

@@ -21,16 +21,7 @@
   <div class='jumbotron'>
     <div class='container'>
       <h1>Welcome to M&#233;lange</h1>
-      <div class="form">
-        <form class="form-inline" id="submit-ingredients">
-          <label>Search Recipes with Ingredients</label>
-          <input type="hidden" name="app_id" value="e7f27eb3">
-          <input type="hidden" name="app_key" value="1a416555863a852b35cd1701d9a4c0c1">
-          <input type="hidden" name="to" value="1">
-          <input type="text" class="form-control gif-input" name="q" value="" placeholder="Ingredients" required>
-          <input type="submit" value="Go!" class="btn btn-primary">
-        </form>
-      </div>
+      <button type="search-ingredients" name="search-ingredients" id='search-ingredients'>Search Ingredients</button>
     </div>
   </div>
 
@@ -42,12 +33,13 @@
     </div>
 
     <!-- recipes container -->
-    <div id='recipes'></div>
+    <div id='recipes'>
+    </div>
 
   </section>
 
   <!-- begin reviewModal: this is not visible until .modal() is called on it  -->
-  <div class='modal fade' tabindex='-1' role='dialog' id='reviewModal'>
+  <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='reviewModal'>
     <div class='modal-dialog'>
       <div class='modal-content'>
         <div class='modal-header'>
@@ -78,7 +70,6 @@
               </div>
             </div>
 
-
           </fieldset>
 
         </div>
@@ -90,6 +81,33 @@
       <!--/.modal-content -->
     </div>
     <!--/.modal-dialog -->
+  </div>
+
+  <!-- begin searchModal: this is not visible until .modal() is called on it  -->
+  <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='searchModal'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+          <h4 class='modal-title'>Search with Ingredients</h4>
+        </div>
+        <fieldset class='form-horizontal'>
+          <!-- text input -->
+          <div class="form modal-footer">
+            <form class="form" id="searchRecipe">
+              <label>Search Recipes with Ingredients</label>
+              <input type="hidden" name="app_id" value="e7f27eb3">
+              <input type="hidden" name="app_key" value="1a416555863a852b35cd1701d9a4c0c1">
+              <input type="hidden" name="to" value="1">
+              <input type="text" class="form-control gif-input" name="q" value="" placeholder="Ingredients">
+              <input type="submit" value="Go!" class="btn btn-primary">
+            </form>
+          </div>
+      </div>
+    </div>
+    <!--/.modal-content -->
+  </div>
+  <!--/.modal-dialog -->
   </div>
   <!--/.modal -->
 

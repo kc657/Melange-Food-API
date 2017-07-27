@@ -1,4 +1,4 @@
-const db = require('./models')
+const db = require('./models.js')
 
 let sampleRecipes = []
 
@@ -66,17 +66,17 @@ sampleRecipes.push({
 let sampleReviews = []
 
 sampleReviews.push({
-  name: 'Kevin',
+  author: 'Kevin',
   wouldRecommend: true
 })
 
 sampleReviews.push({
-  name: 'Mary',
+  author: 'Mary',
   wouldRecommend: false
 })
 
 sampleRecipes.forEach(function (recipe) {
-   recipe.reviews = sampleReviews
+  recipe.reviews = sampleReviews
 })
 
 db.Recipe.remove({}, function (err, recipes) {
