@@ -81,7 +81,8 @@ function getRecipes () {
         source: recipes.hits[0].recipe.source,
         sourceUrl: recipes.hits[0].recipe.url,
         imgUrl: recipes.hits[0].recipe.image,
-        ingredients: recipes.hits[0].recipe.ingredientLines
+        ingredients: recipes.hits[0].recipe.ingredientLines,
+        yield: recipes.hits[0].recipe.yield
       }
       $.ajax({
         method: 'POST',
