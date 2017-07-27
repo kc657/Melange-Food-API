@@ -20,15 +20,24 @@ h1 {
   text-shadow: 2px 2px 2px #FAA916 !important;
 }
 
+#search-ingredients {
+  color: black;
+}
+
+/*model transparent default*/
+
 .modal-transparent {
   background: transparent;
 }
+
 .modal-transparent .modal-content {
   background: transparent;
 }
+
 .modal-backdrop.modal-backdrop-transparent {
   background: #ffffff;
 }
+
 .modal-backdrop.modal-backdrop-transparent.in {
   opacity: .9;
   filter: alpha(opacity=90);

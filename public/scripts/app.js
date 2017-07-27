@@ -1,9 +1,14 @@
 console.log('Sanity Check')
 
 $(document).ready(function () {
-  $('#submit-ingredients').on('submit', function (doc) {
+  $('#search-ingredients').on('click', function (e) {
+    e.preventDefault()
     $('#searchModal').modal('show')
-    doc.preventDefault()
+    // getRecipes()
+  })
+
+  $('#searchRecipe').on('submit', function (e) {
+    e.preventDefault()
     getRecipes()
   })
 
