@@ -5,10 +5,10 @@ function reviewsIndex (req, res) {
   console.log('reviewsController Working')
 }
 
-function reviewsCreate (req, res ) {
-  let newReview = req.body
+function reviewsCreate (req, res) {
   db.Recipe.findById(req.params.currentRecipeId, function (err, foundRecipe) {
-    console.log(foundRecipe);
+    let newReview = req.body
+    console.log(newReview)
   })
 }
 

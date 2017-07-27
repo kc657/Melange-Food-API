@@ -25,7 +25,6 @@ $(document).ready(function () {
 
   $('#recipes').on('click', '.add-review', function (e) {
     let id = $(this).closest('.recipe').data('recipe-id')
-    console.log(id)
     $('#reviewModal').data('recipe-id', id)
     $('#reviewModal').modal('show')
   })
@@ -223,14 +222,12 @@ function renderIngredient (ingredients) {
 
 function handleAddReviewClick (e) {
   const currentRecipeId = $(this).closest('.recipe').data('recipe-id')
-  console.log('id', currentRecipeId)
   $('#reviewModal').data('recipe-id', currentRecipeId)
   $('#reviewModal').modal()
 }
 
 function handleNewReviewSubmit (e) {
   const currentRecipeId = $('#reviewModal').data('recipe-id')
-  console.log(currentRecipeId);
   let reviewerName = $('#reviewerName').val()
   let reviewRating = $('#recommendationRating').val()
   let reviewInputSchema = {
@@ -242,14 +239,14 @@ function handleNewReviewSubmit (e) {
     url: '/api/recipes/' + currentRecipeId + '/reviews',
     data: reviewInputSchema,
     success: savedNewReview,
-    error:  failedNewReview
+    error: failedNewReview
   })
 }
 
 function savedNewReview (e) {
-  console.log('saved new review working');
+  console.log('saved new review working')
 }
 
 function failedNewReview (e) {
-  console.log('saved new review not working');
+  console.log('saved new review not working')
 }
