@@ -26,6 +26,8 @@ app.get('/api/recipes/:recipeId', controllers.recipe.show)
 
 app.get('/api/recipes/:recipeId/reviews', controllers.review.reviewsIndex)
 
+app.post('/api/recipes/:recipeId/reviews', controllers.review.reviewsCreate)
+
 app.post('/api/recipes', controllers.recipe.recipesCreate)
 
 app.delete('/api/recipes/:recipeId', controllers.recipe.recipesDestroy)

@@ -230,6 +230,25 @@ function handleAddReviewClick (e) {
 
 function handleNewReviewSubmit (e) {
   const currentRecipeId = $(this).closest('.recipe').data('recipe-id')
+  let reviewerName = $('#reviewerName').val()
   let reviewRating = $('#recommendationRating').val()
-  console.log(reviewRating);
+  let reviewInputSchema = {
+    author: reviewerName,
+    wouldRecommend: reviewRating
+  }
+  $.ajax({
+    method: 'POST',
+    url: '/api/recipes/' + currentRecipeId + '/reviews',
+    data: reviewInputSchema,
+    success: savedNewReview,
+    error:  failedNewReview
+  })
+}
+
+function savedNewReview (e) {
+  console.log('saved new review working');
+}
+
+function failedNewReview (e) {
+  console.log('saved new review not working');
 }
