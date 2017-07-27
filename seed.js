@@ -13,6 +13,7 @@ sampleReviews.push({
 })
 
 sampleRecipes.push({
+  _id: 1,
   name: 'Chicken Fried Rice',
   url: 'www.google.com',
   imgUrl: 'https://www.gimmesomeoven.com/wp-content/uploads/2014/03/Fried-Rice-7.jpg',
@@ -35,6 +36,7 @@ sampleRecipes.push({
 })
 
 sampleRecipes.push({
+  _id: 2,
   name: 'Teriyaki Chicken',
   url: 'http://www.davidlebovitz.com/chicken-teriyaki-recipe-japanese-farm-food/',
   imgUrl: 'https://www.edamam.com/web-img/c8e/c8e021a608c2f51b6af1e20e6d58fb3b.jpg',
@@ -51,6 +53,7 @@ sampleRecipes.push({
 })
 
 sampleRecipes.push({
+  _id: 3,
   name: 'Chicken Piccata',
   url: 'http://norecipes.com/recipe/chicken-piccata-recipe',
   imgUrl: 'https://www.edamam.com/web-img/eb5/eb5985a8a19a9fc72b0cf627282199ed.jpg',
