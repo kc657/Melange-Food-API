@@ -221,23 +221,22 @@ function renderIngredient (ingredients) {
 }
 
 function handleAddReviewClick (e) {
-  const currentRecipeId = $(this).closest('.recipe').data('recipe-id')
-  $('#reviewModal').data('recipe-id', currentRecipeId)
+  const recipe_id = $(this).closest('.recipe').data('recipe-id')
+  $('#reviewModal').data('recipe-id', recipe_id)
   $('#reviewModal').modal()
 }
 
 function handleNewReviewSubmit (e) {
-  const currentRecipeId = $('#reviewModal').data('recipe-id')
+  const recipe_id = $('#reviewModal').data('recipe-id')
   let reviewerName = $('#reviewerName').val()
   let reviewRating = $('#recommendationRating').val()
-  let reviewInputSchema = {
-    author: reviewerName,
-    wouldRecommend: reviewRating
-  }
   $.ajax({
     method: 'POST',
-    url: '/api/recipes/' + currentRecipeId + '/reviews',
-    data: reviewInputSchema,
+    url: '/api/recipes/' + recipe_id + '/reviews',
+    data: {
+      author: reviewerName,
+      wouldRecommend: reviewRating
+    },
     success: savedNewReview,
     error: failedNewReview
   })

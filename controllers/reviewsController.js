@@ -6,9 +6,21 @@ function reviewsIndex (req, res) {
 }
 
 function reviewsCreate (req, res) {
-  db.Recipe.findById(req.params.currentRecipeId, function (err, foundRecipe) {
-    let newReview = req.body
-    console.log(newReview)
+  const recipe_id = req.params.recipe_id
+  console.log(recipe_id)
+  db.Recipe.findById(recipe_id, function (err, recipe) {
+    if (err) return res.status(500).json(err)
+    if (recipe === null) return res.status(404).json({message: "didn't find the recipe."})
+    db.Review.create({
+      author: req.body.author,
+      wouldRecommend: req.body.wouldRecommend
+    }, function (err, review) {
+      if (err) return res.status(500).json(err)
+      console.log('hi there');
+      recipe.reviews.push(review)
+      recipe.save()
+      res.json(review)
+    })
   })
 }
 

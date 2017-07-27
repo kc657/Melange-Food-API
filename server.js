@@ -22,11 +22,11 @@ app.get('/api', controllers.api.index)
 
 app.get('/api/recipes', controllers.recipe.recipesIndex)
 
-app.get('/api/recipes/:recipeId', controllers.recipe.show)
+app.get('/api/recipes/:recipe_id', controllers.recipe.show)
 
-app.get('/api/recipes/:recipeId/reviews', controllers.review.reviewsIndex)
+app.get('/api/recipes/:recipe_id/reviews', controllers.review.reviewsIndex)
 
-app.post('/api/recipes/:recipeId/reviews', controllers.review.reviewsCreate)
+app.post('/api/recipes/:recipe_id/reviews', controllers.review.reviewsCreate)
 
 app.post('/api/recipes', controllers.recipe.recipesCreate)
 
