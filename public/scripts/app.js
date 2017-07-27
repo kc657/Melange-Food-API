@@ -159,7 +159,7 @@ function renderReview (review) {
 
 // takes seed recipes and renders it on the page
 function renderSeedRecipes (recipe) {
-  recipe.reviewsHtml = recipe.reviews.map(renderReview)
+  let seedReview = recipe.reviews.map(renderReview)
   let ingredientList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
     <div class='row recipe' data-recipe-id='${recipe._id}'>
@@ -191,7 +191,7 @@ function renderSeedRecipes (recipe) {
 
                   <li class='list-group-item'>
                     <h4 class='inline-header'>Reviews:</h4>
-                    <ul>${recipe.reviewsHtml}</ul>
+                    <ul>${seedReview}</ul>
                   </li>
 
                 </ul>
