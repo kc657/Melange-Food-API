@@ -55,19 +55,22 @@ function getRecipes () {
 }
 
 function postEdamamRecipes (recipes) {
-  let edamamName = recipes.hits[0].recipe.label
-  let edamamCalories = recipes.hits[0].recipe.calories
-  let edamamHealthLabels = recipes.hits[0].recipe.healthLabels
-  let edamamSource = recipes.hits[0].recipe.source
-  let edamamUrl = recipes.hits[0].recipe.url
-  let edamamImage = recipes.hits[0].recipe.image
-  let edamamIngredients = recipes.hits[0].recipe.ingredientLines
-  let ingredientList = renderIngredient(edamamIngredients)
-
+  // let edamamIngredients = recipes.hits[0].recipe.ingredientLines
+  // let formatIngredients = renderIngredient(edamamIngredients)
+  // console.log(formatIngredients);
+  let edamamApiRecipe = {
+    name: recipes.hits[0].recipe.label,
+    calories: recipes.hits[0].recipe.calories,
+    healthLabels: recipes.hits[0].recipe.healthLabels,
+    source: recipes.hits[0].recipe.source,
+    sourceUrl: recipes.hits[0].recipe.url,
+    imgUrl: recipes.hits[0].recipe.image,
+    ingredients: recipes.hits[0].recipe.ingredientLines
+  }
   $.ajax({
     method: 'POST',
     url: '/api/recipes',
-    dataType: edamamName,
+    data: edamamApiRecipe,
     success: renderEdamamRecipes,
     error: function () {
       console.log('Recipe posting failed')
@@ -75,7 +78,7 @@ function postEdamamRecipes (recipes) {
   })
 }
 
-function renderEdamamRecipes (recipes) {
+function renderEdamamRecipes (recipe) {
   let recipeHtml = (`
       <div class='row recipe'>
         <div class='col-md-10 col-md-offset-1'>
@@ -85,23 +88,23 @@ function renderEdamamRecipes (recipes) {
              <!-- begin recipe internal row -->
               <div class='row'>
                 <div class='col-md-3 col-xs-12 thumbnail recipe-image'>
-                  <img src='${edamamImage}' alt='recipe image'>
+                  <img src='${recipe.imgUrl}' alt='recipe image'>
                 </div>
 
                 <div class='col-md-9 col-xs-12'>
                   <ul class='list-group'>
                     <li class='list-group-item'>
                       <h4 class='inline-header'>Recipe Name:</h4>
-                      <span class='recipe-name'>${edamamName}</span>
+                      <span class='recipe-name'>${recipe.name}</span>
                     </li>
 
                     <li class='list-group-item'>
-                      <a href='${edamamUrl}'> via ${edamamSource}</a>
+                      <a href='${recipe.sourceUrl}'> via ${recipe.source}</a>
                     </li>
 
                     <li class='list-group-item'>
                       <h4 class='inline-header'>Ingredients:</h4>
-                      <ul>${ingredientList}</ul>
+                      <ul>${recipe.ingredients}</ul>
                     </li>
 
                   </ul>

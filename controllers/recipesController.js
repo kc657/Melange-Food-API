@@ -7,9 +7,19 @@ function recipesIndex (req, res) {
   })
 }
 
+function show (req, res) {
+  db.Recipe.findById(req.params.recipeId, function (err, foundRecipe) {
+    if (err) { console.log('Cannot find the recipe') }
+    res.json(foundRecipe)
+  })
+}
+
 function recipesCreate (req, res) {
-  console.log('hitting recipes create controller')
-  console.log()
+  const newRecipe = req.body
+  db.Recipe.create(newRecipe, function (err, recipe) {
+    if (err) return res.status(500).json(err)
+    res.json(recipe)
+  })
 }
 
 function recipesDestroy (req, res) {
@@ -23,5 +33,6 @@ function recipesDestroy (req, res) {
 module.exports = {
   recipesIndex: recipesIndex,
   recipesCreate: recipesCreate,
-  recipesDestroy: recipesDestroy
+  recipesDestroy: recipesDestroy,
+  show: show
 }
