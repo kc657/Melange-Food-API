@@ -1,16 +1,6 @@
 const db = require('./models')
 
-let sampleReviews = []
 let sampleRecipes = []
-
-sampleReviews.push({
-  name: 'Kevin',
-  wouldRecommend: true
-})
-sampleReviews.push({
-  name: 'Mary',
-  wouldRecommend: false
-})
 
 sampleRecipes.push({
   _id: 1,
@@ -32,7 +22,6 @@ sampleRecipes.push({
     '1 tablespoon dried oregano',
     'Salt and pepper',
     '1 cup frozen peas, thawed']
-  // reviews: [Review.schema]
 })
 
 sampleRecipes.push({
@@ -49,7 +38,6 @@ sampleRecipes.push({
     '1/2 cup (125ml) soy sauce',
     'One 2-inch (5cm) piece of fresh ginger, peeled and grated',
     '2-pounds (900g) boneless chicken thighs (4-8 thighs, depending on size)']
-  // reviews: [Review.schema]
 })
 
 sampleRecipes.push({
@@ -73,12 +61,23 @@ sampleRecipes.push({
     '2 tbsps parsley minced',
     '2 tbsps capers',
     '1 tsp lemon zest finely zested']
-  // reviews: [Review.schema]
 })
 
-// sampleRecipes.forEach(function (recipe) {
-//   recipe.reviews = sampleReviews
-// })
+let sampleReviews = []
+
+sampleReviews.push({
+  name: 'Kevin',
+  wouldRecommend: true
+})
+
+sampleReviews.push({
+  name: 'Mary',
+  wouldRecommend: false
+})
+
+sampleRecipes.forEach(function (recipe) {
+   recipe.reviews = sampleReviews
+})
 
 db.Recipe.remove({}, function (err, recipes) {
   // code in here runs after all albums are removed

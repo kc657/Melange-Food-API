@@ -1,8 +1,8 @@
-let mongoose = require('mongoose')
-let Schema = mongoose.Schema
-let Review = require('./review.js')
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const Review = require('./review.js')
 
-let RecipeSchema = new Schema({
+const RecipeSchema = new Schema({
   _id: Number,
   name: String,
   url: String,
@@ -15,6 +15,6 @@ let RecipeSchema = new Schema({
   reviews: [Review.schema]
 })
 
-let Recipe = mongoose.model('Recipe', RecipeSchema)
+const Recipe = mongoose.model('Recipe', RecipeSchema)
 
 module.exports = Recipe
