@@ -1,6 +1,6 @@
 # food-search-api
 
-Food Search API provides the hungry user with a tool to find recipes! Integration of the Food2Fork API allows the user to search for recipes by ingredients in their inventory. The user can then save the search results and generate a list of saved recipes they want to cook.
+Melange API provides the hungry user with a tool to find recipes! Integration of the Edamam Recipe Search API allows the user to search for recipes using multiple ingredients in their inventory. The user can then save the search results and generate a list of saved recipes they want to cook.
 
 ## Technologies Used
 
@@ -14,7 +14,7 @@ Food Search API provides the hungry user with a tool to find recipes! Integratio
 <li> Bootstrap </li>
 <li> HTML5 </li>
 <li> CSS3 </li>
-<li> Food2Fork API </li>
+<li> Edamam Recipe Search API </li>
 <li> RESTful route design </li>
 <li> CRUD </li>
 
