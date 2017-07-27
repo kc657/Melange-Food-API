@@ -66,12 +66,12 @@ sampleRecipes.push({
 let sampleReviews = []
 
 sampleReviews.push({
-  name: 'Kevin',
+  author: 'Kevin',
   wouldRecommend: true
 })
 
 sampleReviews.push({
-  name: 'Mary',
+  author: 'Mary',
   wouldRecommend: false
 })
 

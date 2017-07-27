@@ -40,9 +40,6 @@ function handleDeleteRecipeSuccess(data) {
   $('div[data-recipe-id=' + deletedRecipeId + ']').remove();
 }
 
-
-
-
 function getRecipes() {
   $.ajax({
     method: 'GET',
@@ -129,12 +126,12 @@ function getApiRecipesError() {
 }
 
 function renderReview(review){
-  return `<span> ${review.author} ${review.wouldRecommend}</span>`
+  return (`<span> ${review.author} ${review.wouldRecommend} </span>`)
 }
 
 // takes seed recipes and renders it on the page
 function renderSeedRecipes(recipe) {
-  recipe.reviewsHtml = recipe.reviews.map(renderReview).join("");
+  recipe.reviewsHtml = recipe.reviews.map(renderReview);
   let ingredientList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
     <div class='row recipe' data-recipe-id='${recipe._id}'>
