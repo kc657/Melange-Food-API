@@ -11,6 +11,7 @@ const RecipeSchema = new Schema({
   yield: Number,
   calories: Number,
   ingredients: [String],
+  yield: Number,
   reviews: [Review.schema]
 })
 
