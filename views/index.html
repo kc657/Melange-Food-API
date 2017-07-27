@@ -95,6 +95,38 @@
   </div>
   <!--/.modal -->
 
+  <!-- begin searchModal: this is not visible until .modal() is called on it  -->
+  <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='searchModal'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+          <h4 class='modal-title'>Search with Ingredients</h4>
+        </div>
+        <div class='modal-body'>
+
+          <fieldset class='form-horizontal'>
+            <!-- text input -->
+            <div class='form-group'>
+              <label class='col-md-1 control-label' for='reviewerName'>Search Using Multiple Ingredients</label>
+              <div class='col-md-4'>
+                <input id='searchIngredients' name='searchIngredients' type='text' placeholder='' class='form-control input-md' />
+              </div>
+            </div>
+
+
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+          <button type='button' class='btn btn-primary' id='searchRecipe'>Find an Awesome Recipe!</button>
+        </div>
+      </div>
+      <!--/.modal-content -->
+    </div>
+    <!--/.modal-dialog -->
+  </div>
+  <!--/.modal -->
+
 </body>
 
 </html>

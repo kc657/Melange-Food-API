@@ -2,16 +2,17 @@ console.log('Sanity Check')
 
 $(document).ready(function () {
   $('#submit-ingredients').on('submit', function (doc) {
+    $('#searchModal').modal('show')
     doc.preventDefault()
     getRecipes()
   })
 
   $('#recipes').on('click', '.add-review', function (e) {
-      let id = $(this).closest('.recipe').data('recipe-id')
-      console.log(id)
-      $('#reviewModal').data('recipe-id', id)
-      $('#reviewModal').modal('show')
-    })
+    let id = $(this).closest('.recipe').data('recipe-id')
+    console.log(id)
+    $('#reviewModal').data('recipe-id', id)
+    $('#reviewModal').modal('show')
+  })
 
   $.ajax({
     method: 'GET',
@@ -26,6 +27,16 @@ $(document).ready(function () {
 
   // delete recipe when its delete button is clicked
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
+
+  // transparent modal addClass functions
+  $('.modal-transparent').on('show.bs.modal', function () {
+    setTimeout(function () {
+      $('.modal-backdrop').addClass('modal-backdrop-transparent')
+    }, 0)
+  })
+  $('.modal-transparent').on('hidden.bs.modal', function () {
+    $('.modal-backdrop').addClass('modal-backdrop-transparent')
+  })
 })
 
 // when a delete button for a specific recipe is clicked
