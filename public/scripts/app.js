@@ -230,4 +230,6 @@ function handleAddReviewClick (e) {
 
 function handleNewReviewSubmit (e) {
   const currentRecipeId = $(this).closest('.recipe').data('recipe-id')
+  let reviewRating = $('#recommendationRating').val()
+  console.log(reviewRating);
 }
