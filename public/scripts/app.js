@@ -30,7 +30,14 @@ $(document).ready(function () {
     }
   })
 
-  // delete recipe when its delete button is clicked
+
+  //catch and handle the click on add review button
+  $('#recipes').on('click', '.add-review', handleAddReviewClick)
+
+  // //save review modal save button
+  // $('#saveReview').on('click', handleNewReviewSubmit)
+
+  //delete recipe when its delete button is clicked
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
 
   // transparent modal addClass functions
@@ -130,7 +137,7 @@ function renderEdamamRecipes (recipe) {
 
                 <div class='panel-footer'>
                 <button type='button' class='btn btn-primary add-review'>Add Review</button>
-                <button type='button' class='btn btn-primary delete-recipe'>Delete Recipe</button>
+                <button type='button' class='btn btn-danger delete-recipe'>Delete Recipe</button>
                 </div>
 
               </div>
@@ -213,4 +220,12 @@ function renderIngredient (ingredients) {
       `)
   })
   return ingredientHtml
+}
+
+function handleAddReviewClick(e) {
+  console.log('add-review clicked!')
+  var currentRecipeId = $(this).closest('.recipe').data('recipe-id')
+  console.log('id',currentRecipeId);
+  $('#reviewModal').data('recipe-id', currentRecipeId);
+  $('#reviewModal').modal();
 }
