@@ -101,12 +101,16 @@ function renderEdamamRecipes (recipe) {
                       <h4 class='inline-header'>Ingredients:</h4>
                       <ul>${recipe.ingredients}</ul>
                     </li>
-
+                    <li class='list-group-item'>
+                      <h4 class='inline-header'>Reviews:</h4>
+                      <ul>R${recipe.reviews}</ul>
+                    </li>
                   </ul>
                 </div>
                 <!-- end of recipe internal row -->
 
                 <div class='panel-footer'>
+                <button type='button' class='btn btn-primary add-review'>Add Review</button>
                 <button type='button' class='btn btn-primary delete-recipe'>Delete Recipe</button>
                 </div>
 

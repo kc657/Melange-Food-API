@@ -76,7 +76,7 @@ sampleReviews.push({
 })
 
 sampleRecipes.forEach(function (recipe) {
-   recipe.reviews = sampleReviews
+  recipe.reviews = sampleReviews
 })
 
 db.Recipe.remove({}, function (err, recipes) {
