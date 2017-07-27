@@ -5,6 +5,14 @@ $(document).ready(function () {
     doc.preventDefault()
     getRecipes()
   })
+
+  $('#recipes').on('click', '.add-review', function (e) {
+      let id = $(this).closest('.recipe').data('recipe-id')
+      console.log(id)
+      $('#reviewModal').data('recipe-id', id)
+      $('#reviewModal').modal('show')
+    })
+
   $.ajax({
     method: 'GET',
     url: '/api/recipes',
@@ -70,7 +78,7 @@ function postEdamamRecipes (recipes) {
 
 function renderEdamamRecipes (recipe) {
   let recipeHtml = (`
-      <div class='row recipe'>
+      <div class='row recipe' data-recipe-id='${recipe._id}'>
         <div class='col-md-10 col-md-offset-1'>
           <div class='panel panel-default'>
             <div class='panel-body'>
