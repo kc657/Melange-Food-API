@@ -1,29 +1,27 @@
 console.log('Sanity Check')
 
-$(document).ready(function() {
-  $('#submit-ingredients').on('submit', function(doc) {
+$(document).ready(function () {
+  $('#submit-ingredients').on('submit', function (doc) {
     doc.preventDefault()
     getRecipes()
   })
   $.ajax({
     method: 'GET',
     url: '/api/recipes',
-    success: function(recipes) {
+    success: function (recipes) {
       recipes.forEach(renderSeedRecipes)
     },
-    error: function(err) {
+    error: function (err) {
       throw err
     }
   })
 
-  //delete recipe when its delete button is clicked
+  // delete recipe when its delete button is clicked
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
-
 })
 
-
-//when a delete button for a specific recipe is clicked
-function handleDeleteRecipeClick(e) {
+// when a delete button for a specific recipe is clicked
+function handleDeleteRecipeClick (e) {
   let recipeId = $(this).parents('.recipe').data('recipe-id')
   console.log(`Try and delete me now ${recipeId}`)
   $.ajax({
@@ -33,14 +31,14 @@ function handleDeleteRecipeClick(e) {
   })
 }
 
-//callback function after DELTE /api/albums/:id
-function handleDeleteRecipeSuccess(data) {
-  let deletedRecipeId = data._id;
-  console.log(`you are deleting ${deletedRecipeId}`);
-  $('div[data-recipe-id=' + deletedRecipeId + ']').remove();
+// callback function after DELTE /api/albums/:id
+function handleDeleteRecipeSuccess (data) {
+  let deletedRecipeId = data._id
+  console.log(`you are deleting ${deletedRecipeId}`)
+  $('div[data-recipe-id=' + deletedRecipeId + ']').remove()
 }
 
-function getRecipes() {
+function getRecipes () {
   $.ajax({
     method: 'GET',
     url: 'https://api.edamam.com/search',
@@ -51,7 +49,7 @@ function getRecipes() {
   })
 }
 
-function postEdamamRecipes(recipes) {
+function postEdamamRecipes (recipes) {
   // let edamamIngredients = recipes.hits[0].recipe.ingredientLines
   // let formatIngredients = renderIngredient(edamamIngredients)
   // console.log(formatIngredients);
@@ -69,13 +67,13 @@ function postEdamamRecipes(recipes) {
     url: '/api/recipes',
     data: edamamApiRecipe,
     success: renderEdamamRecipes,
-    error: function() {
+    error: function () {
       console.log('Recipe posting failed')
     }
   })
 }
 
-function renderEdamamRecipes(recipe) {
+function renderEdamamRecipes (recipe) {
   let recipeHtml = (`
       <div class='row recipe'>
         <div class='col-md-10 col-md-offset-1'>
@@ -121,17 +119,17 @@ function renderEdamamRecipes(recipe) {
   $('#recipes').prepend(recipeHtml)
 }
 
-function getApiRecipesError() {
+function getApiRecipesError () {
   console.log('Get Recipes Error')
 }
 
-function renderReview(review){
+function renderReview (review) {
   return (`<span> ${review.author} ${review.wouldRecommend} </span>`)
 }
 
 // takes seed recipes and renders it on the page
-function renderSeedRecipes(recipe) {
-  recipe.reviewsHtml = recipe.reviews.map(renderReview);
+function renderSeedRecipes (recipe) {
+  recipe.reviewsHtml = recipe.reviews.map(renderReview)
   let ingredientList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
     <div class='row recipe' data-recipe-id='${recipe._id}'>
@@ -184,9 +182,9 @@ function renderSeedRecipes(recipe) {
   $('#recipes').prepend(recipeHtml)
 }
 
-function renderIngredient(ingredients) {
+function renderIngredient (ingredients) {
   let ingredientHtml = ''
-  ingredients.forEach(function(e) {
+  ingredients.forEach(function (e) {
     ingredientHtml += (`
         <li class='ingredient' id='ingredient'>${e}</li>
       `)
