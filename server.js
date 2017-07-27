@@ -24,7 +24,7 @@ app.get('/api/recipes', controllers.recipe.recipesIndex)
 
 app.get('/api/recipes/:recipeId', controllers.recipe.show)
 
-app.get('/api/reviews', controllers.review.reviewsIndex)
+app.get('/api/recipes/:recipeId/reviews', controllers.review.reviewsIndex)
 
 app.post('/api/recipes', controllers.recipe.recipesCreate)
 
