@@ -137,7 +137,7 @@ function renderEdamamRecipes(recipe) {
             <ul>${recipe.reviews}</ul>
             <div class='bottom-align-buttons'>
               <button type='button' class='btn btn-primary add-review'><span class="icon"><i class="fa fa-plus"></i></span> Add Review</button>
-
+              <button type='button' class='btn btn-info edit-recipe'><span class="icon"><i class="fa fa-pencil"></i></span> Edit</button>
               <button type='button' class='btn btn-danger delete-recipe'><span class="icon"><i class="fa fa-trash-o"></i></span> Delete Recipe</button>
             </div>
 
