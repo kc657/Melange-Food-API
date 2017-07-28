@@ -1,11 +1,39 @@
-.jumbotron {
+div {
+  border: 1px dashed grey;
+}
+
+body {
   background-image: url(/images/croissantsBaking.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
   color: #EEE;
+  background-attachment: fixed;
 }
 
+
+p.define {
+  font-style: italic;
+  letter-spacing: 2px;
+  margin: 15px 0px 20px 25px;
+  font-size: 20px;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 70px !important;
+  letter-spacing: 7px;
+  text-align: left;
+
+}
+
+
+
+
+/*font-family: 'Arvo', serif;
+font-family: 'Cutive', serif;
+font-family: 'Raleway', sans-serif;
+*/
+/*
 .jumbotron .container {
   height: 450px;
 }

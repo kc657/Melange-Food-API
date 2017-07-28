@@ -8,7 +8,10 @@
 
   <!-- STYLESHEETS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins">
+
   <link rel="stylesheet" href="styles/styles.css">
+
   <!-- JQUERY SCRIPTS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- BOOTSTRAP SCRIPTS -->
@@ -18,9 +21,30 @@
 </head>
 
 <body>
+  <div class="container">
+    <div class="row header">
+      <div class="col-xs-12 topBar">
+        <div class="col-xs-6 col-md-6 col-lg-6">
+            <h1>M&#233;lange</h1>
+            <p class="define">
+              (n.) a mixture of incongruous elements
+            </p>
+          <button type="search-ingredients" name="search-ingredients" id="search-ingredients">Search Ingredients</button>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <!--
   <div class='jumbotron'>
     <div class='container'>
       <h1>Welcome to M&#233;lange</h1>
+      <p>
+      (n.) a mixture of incongruous elements
+      </p>
       <button type="search-ingredients" name="search-ingredients" id='search-ingredients'>Search Ingredients</button>
     </div>
   </div>
@@ -32,11 +56,10 @@
       </div>
     </div>
 
-    <!-- recipes container -->
     <div id='recipes'>
     </div>
 
-  </section>
+  </section> -->
 
   <!-- begin reviewModal: this is not visible until .modal() is called on it  -->
   <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='reviewModal'>
@@ -99,13 +122,11 @@
             </form>
           </div>
       </div>
+      <!--/.modal-content -->
     </div>
-    <!--/.modal-content -->
-  </div>
-  <!--/.modal-dialog -->
+    <!--/.modal-dialog -->
   </div>
   <!--/.modal -->
-
 </body>
 
 </html>
