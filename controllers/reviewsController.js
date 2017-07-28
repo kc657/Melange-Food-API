@@ -6,9 +6,9 @@ function reviewsIndex (req, res) {
 }
 
 function reviewsCreate (req, res) {
-  const recipe_id = req.params.recipe_id
-  console.log(recipe_id)
-  db.Recipe.findById(recipe_id, function (err, recipe) {
+  const recipeId = req.params.recipeId
+  console.log(recipeId)
+  db.Recipe.findById(recipeId, function (err, recipe) {
     if (err) return res.status(500).json(err)
     if (recipe === null) return res.status(404).json({message: "didn't find the recipe."})
     db.Review.create({

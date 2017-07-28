@@ -24,22 +24,22 @@ app.get('/api', controllers.api.index)
 app.get('/api/recipes', controllers.recipe.recipesIndex)
 
 //get recipes by id
-app.get('/api/recipes/:recipe_id', controllers.recipe.show)
+app.get('/api/recipes/:recipeId', controllers.recipe.show)
 
 // get specific recipe reviews
-app.get('/api/recipes/:recipe_id/reviews', controllers.review.reviewsIndex)
+app.get('/api/recipes/:recipeId/reviews', controllers.review.reviewsIndex)
 
 // create new recipe
 app.post('/api/recipes', controllers.recipe.recipesCreate)
 
 // create new review for recipe
-app.post('/api/recipes/:recipe_id/reviews', controllers.review.reviewsCreate)
+app.post('/api/recipes/:recipeId/reviews', controllers.review.reviewsCreate)
 
 // edit recipe
-app.put('/api/recipes/:recipe_id', controllers.recipe.recipesEdit)
+app.put('/api/recipes/:recipeId', controllers.recipe.recipesEdit)
 
 // delete recipe
-app.delete('/api/recipes/:recipe_id', controllers.recipe.recipesDestroy)
+app.delete('/api/recipes/:recipeId', controllers.recipe.recipesDestroy)
 
 /**********
  * SERVER *

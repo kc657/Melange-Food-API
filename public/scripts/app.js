@@ -30,16 +30,23 @@ $(document).ready(function () {
 
   // catch and handle the click on add review button
   $('#recipes').on('click', '.add-review', function handleAddReviewClick (e) {
-    const recipe_id = $(this).closest('.recipe').data('recipe-id')
-    $('#reviewModal').data('recipe-id', recipe_id)
+    const recipeId = $(this).closest('.recipe').data('recipe-id')
+    $('#reviewModal').data('recipe-id', recipeId)
     $('#reviewModal').modal()
   })
 
-  // //save review modal save button
+  // save review modal save button
   $('#saveReview').on('click', handleNewReviewSubmit)
 
-  // edit recipe
-  $('#recipes').on('click', '.edit-recipe', handleEditRecipeClick)
+  // edit recipe click to pop modal
+  $('#recipes').on('click', '.edit-recipe', function handleEditRecipeClick (e) {
+    const recipeId = $(this).closest('.recipe').data('recipe-id')
+    $('#editModal').data('recipe-id', recipeId)
+    $('#editModal').modal()
+  })
+
+  // edit recipe click to save changes
+  $('#saveEdit').on('click', handleEditRecipeClick)
 
   // delete recipe when its delete button is clicked
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
@@ -57,9 +64,9 @@ $(document).ready(function () {
 
 // when a delete button for a specific recipe is clicked
 function handleDeleteRecipeClick (e) {
-  let recipe_id = $(this).parents('.recipe').data('recipe-id')
+  const recipeId = $(this).parents('.recipe').data('recipe-id')
   $.ajax({
-    url: '/api/recipes/' + recipe_id,
+    url: '/api/recipes/' + recipeId,
     method: 'DELETE',
     success: function handleDeleteRecipeSuccess (data) {
       let deletedRecipeId = data._id
@@ -69,12 +76,13 @@ function handleDeleteRecipeClick (e) {
 }
 
 function handleEditRecipeClick (e) {
-  let recipe_id = $(this).parents('.recipe').data('recipe-id')
+  const recipeId = $('#editModal').data('recipe-id')
+  console.log(recipeId);
   $.ajax({
-    url: '/api/recipes/' + recipe_id,
+    url: '/api/recipes/' + recipeId,
     method: 'PUT',
     success: function (recipe) {
-      $(`.recipe[data-recipe-id='${recipe_id}']`).remove()
+      $(`.recipe[data-recipe-id='${recipeId}']`).remove()
       renderEdamamRecipes(recipe)
     }
   })
@@ -207,12 +215,12 @@ function renderSeedRecipes (recipe) {
 }
 
 function handleNewReviewSubmit (e) {
-  const recipe_id = $('#reviewModal').data('recipe-id')
+  const recipeId = $('#reviewModal').data('recipe-id')
   let reviewerName = $('#reviewerName').val()
   let reviewRating = $('#recommendationRating').val()
   $.ajax({
     method: 'POST',
-    url: '/api/recipes/' + recipe_id + '/reviews',
+    url: '/api/recipes/' + recipeId + '/reviews',
     data: {
       author: reviewerName,
       wouldRecommend: reviewRating
@@ -221,9 +229,9 @@ function handleNewReviewSubmit (e) {
       console.log('Review added!')
       $.ajax({
         method: 'GET',
-        url: '/api/recipes/' + recipe_id,
+        url: '/api/recipes/' + recipeId,
         success: function (recipe) {
-          $(`.recipe[data-recipe-id='${recipe_id}']`).remove()
+          $(`.recipe[data-recipe-id='${recipeId}']`).remove()
           renderEdamamRecipes(recipe)
         }
       })

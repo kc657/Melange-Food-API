@@ -74,7 +74,6 @@
           <h4 class='modal-title'>Add Review</h4>
         </div>
         <div class='modal-body'>
-
           <fieldset class='form-horizontal'>
             <!-- text input -->
             <div class='form-group'>
@@ -83,17 +82,14 @@
                 <input id='reviewerName' name='reviewerName' type='text' placeholder='' class='form-control input-md' />
               </div>
             </div>
-
-            <!-- radio button input -->
+            <!-- value input -->
             <div class='form-group'>
               <label class='col-md-4 control-label' for='wouldRecommend'>Recommend This Recipe? Please rate it on a scale of 1 to 10</label>
               <div class='col-md-4'>
                 <input id='recommendationRating' name='recommendation' type='number' class='form-control input-md' placeholder='1 - 10' min='1' max='10' />
               </div>
             </div>
-
           </fieldset>
-
         </div>
         <div class='modal-footer'>
           <button type='button' class='btn btn-default' data-dismiss='modal' id='closeModal'>Close</button>
@@ -105,129 +101,31 @@
     <!--/.modal-dialog -->
   </div>
 
-  <!-- begin searchModal: this is not visible until .modal() is called on it  -->
-  <!-- <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='searchModal'>
+  <!-- begin editModal: this is not visible until .modal() is called on it  -->
+  <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='editModal'>
     <div class='modal-dialog'>
       <div class='modal-content'>
         <div class='modal-header'>
           <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-          <h4 class='modal-title'>Search with Ingredients</h4>
+          <h4 class='modal-title'>Edit Recipe</h4>
         </div>
-        <fieldset class='form-horizontal'>
-          <! text input -->
-  <!-- <div class="form modal-footer">
-            <form class="form" id="searchRecipe">
-              <label>Search Recipes with Ingredients</label>
-              <input type="hidden" name="app_id" value="e7f27eb3">
-              <input type="hidden" name="app_key" value="1a416555863a852b35cd1701d9a4c0c1">
-              <input type="hidden" name="to" value="1">
-              <input type="text" class="form-control gif-input" name="q" value="" placeholder="Ingredients">
-              <input type="submit" value="Go!" class="btn btn-primary">
-            </form>
-          </div>
-      </div> -->
-  <!--/.modal-content -->
-  <!-- </div> -->
-  <!--/.modal-dialog -->
-  <!-- </div> -->
-  <!--/.modal -->
-
-  <div class='recipe' data-recipe-id='${recipe._id}'>
-    <div class='col-xs-12 col-md-3'>
-      <div class='thumbnail'>
-        <img src='${recipe.imgUrl}' alt='recipe image'>
-        <div class='caption'>
-          <h4 class='inline-header'><strong>${recipe.name}</strong></h4>
-          <p>via<a href='${recipe.sourceUrl}'> ${recipe.source}</a></p>
-          <h4 class='inline-header'><strong>Ingredients:</strong></h4>
-          <ul>${recipe.ingredients}</ul>
-          <h4 class='inline-header'><strong>Reviews:</strong></h4>
-          <ul>${recipe.reviews}</ul>
-          <div class='bottom-align-buttons'>
-            <button type='button' class='btn btn-primary add-review'><span class="icon"><i class="fa fa-plus"></i></span> Add Review</button>
-            <button type='button' class='btn btn-danger delete-recipe'>            <span class="icon"><i class="fa fa-trash-o"></i></span> Delete Recipe</button>
-          </div>
-
+        <div class='modal-body'>
+          <fieldset class='form-horizontal'>
+            <!-- text input -->
+            <div class='form-group'>
+              <label class='col-md-4 control-label' for='editName'>New Recipe Name</label>
+              <div class='col-md-4'>
+                <input id='editName' name='editRecipeName' type='text' placeholder='' class='form-control input-md' />
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-default' data-dismiss='modal' id='closeModal'>Close</button>
+          <button type='button' class='btn btn-primary' id='saveEdit'>Save Edit</button>
         </div>
       </div>
+      <!--/.modal-content -->
     </div>
+    <!--/.modal-dialog -->
   </div>
-
-
-
-<!-- FROM APP.JS
-FROM APP.JS -->
-
-  <div class='row recipe' data-recipe-id='${recipe._id}'>
-    <div class='col-md-10 col-md-offset-1'>
-      <div class='panel panel-default'>
-        <div class='panel-body'>
-
-          <!-- begin recipe internal row -->
-          <div class='row'>
-            <div class='col-md-3 col-xs-12 thumbnail recipe-image'>
-              <img src='${recipe.imgUrl}' alt='recipe image'>
-            </div>
-
-            <div class='col-md-9 col-xs-12'>
-              <ul class='list-group'>
-                <li class='list-group-item'>
-                  <h4 class='inline-header'>Recipe Name:</h4>
-                  <span class='recipe-name'>${recipe.name}</span>
-                </li>
-
-                <li class='list-group-item'>
-                  <a href='${recipe.sourceUrl}'> via ${recipe.source}</a>
-                </li>
-
-                <li class='list-group-item'>
-                  <h4 class='inline-header'>Ingredients:</h4>
-                  <ul>${recipe.ingredients}</ul>
-                </li>
-                <li class='list-group-item'>
-                  <h4 class='inline-header'>Reviews:</h4>
-                  <ul>${recipe.reviews}</ul>
-                </li>
-              </ul>
-            </div>
-            <!-- end of recipe internal row -->
-
-            <div class='panel-footer'>
-              <button type='button' class='btn btn-primary add-review'>Add Review</button>
-              <button type='button' class='btn btn-danger delete-recipe'>Delete Recipe</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-</body>
-
-</html>
-
-
-<!--
-CARDS TO BE DELETED
-
-
-
-***************
-
-
-  <div class='col-md-4'>
-    <div class='col-md-10'>
-        <div class='panel panel-default'> + <img src='${recipe.imgUrl}' alt='recipe image'> -
-          <div class='panel-body'> +
-            <p>
-              <h4>${recipe.name}</h4></p>
-            +
-            <p>via<a href='${recipe.sourceUrl}'> ${recipe.source}</a></p>
-            +
-            <h4 class='inline-header'>Ingredients:</h4> +
-            <ul>${ingredientList}</ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
