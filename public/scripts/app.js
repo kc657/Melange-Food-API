@@ -10,7 +10,7 @@ $(document).ready(function () {
     method: 'GET',
     url: '/api/recipes',
     success: function (recipes) {
-      recipes.forEach(renderSeedRecipes)
+      recipes.forEach(renderEdamamRecipes)
     },
     error: function (err) {
       throw err
@@ -76,11 +76,14 @@ function handleDeleteRecipeClick (e) {
 }
 
 function handleEditRecipeClick (e) {
+  let newName = $('#editName').val()
+  console.log(newName);
   const recipeId = $('#editModal').data('recipe-id')
   console.log(recipeId);
   $.ajax({
     url: '/api/recipes/' + recipeId,
     method: 'PUT',
+    data:{name: newName},
     success: function (recipe) {
       $(`.recipe[data-recipe-id='${recipeId}']`).remove()
       renderEdamamRecipes(recipe)
@@ -179,38 +182,6 @@ function renderEdamamRecipes (recipe) {
     </div>
         <!-- end of one recipe -->
       `)
-  $('#recipes').prepend(recipeHtml)
-}
-
-// takes seed recipes and renders it on the page
-function renderSeedRecipes (recipe) {
-  let seedReview = recipe.reviews.map(function renderReview (review) {
-    return (`<span> ${review.author} ${review.wouldRecommend} </span>`)
-  })
-  let ingredientList = renderIngredient(recipe.ingredients)
-  let recipeHtml = (`
-    <div class='recipe' data-recipe-id='${recipe._id}'>
-      <div class='col-xs-12 col-md-4'>
-        <div class='thumbnail'>
-          <img src='${recipe.imgUrl}' alt='recipe image'>
-          <div class='caption'>
-            <h4 class='inline-header'><strong>${recipe.name}</strong></h4>
-            <p>via<a href='${recipe.sourceUrl}'> ${recipe.source}</a></p>
-            <h4 class='inline-header'><strong>Ingredients:</strong></h4>
-            <ul>${recipe.ingredients}</ul>
-            <h4 class='inline-header'><strong>Reviews:</strong></h4>
-            <ul>${recipe.reviews}</ul>
-            <div class='bottom-align-buttons'>
-              <button type='button' class='btn btn-primary add-review'><span class="icon"><i class="fa fa-plus"></i></span> Add Review</button>
-              <button type='button' class='btn btn-info edit-recipe'><span class="icon"><i class="fa fa-pencil"></i></span> Edit</button>
-              <button type='button' class='btn btn-danger delete-recipe'><span class="icon"><i class="fa fa-trash-o"></i></span> Delete Recipe</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    `)
   $('#recipes').prepend(recipeHtml)
 }
 

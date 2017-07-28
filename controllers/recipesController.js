@@ -34,8 +34,6 @@ function recipesEdit (req, res) {
   const recipeId = req.params.recipeId
   db.Recipe.findById({ _id: recipeId}, function (err, foundRecipe) {
     if (err) return res.status(500).json(err)
-    console.log(recipeId)
-    console.log(foundRecipe.name)
     console.log(req.body.name)
     foundRecipe.name = req.body.name
     foundRecipe.save(function (err, savedRecipe) {
