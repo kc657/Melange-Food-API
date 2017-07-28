@@ -8,7 +8,7 @@
 
   <!-- STYLESHEETS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins">
+  <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Poppins" rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles/styles.css">
 
@@ -32,6 +32,8 @@
         </div>
       </div>
     </div>
+    <div class="row header"></div>
+
     <div class="row header">
       <div class="col-md-6 col-md-offset-3">
         <div class="box">
@@ -52,10 +54,10 @@
     </div>
   </div>
 
-  <section class='container'>
+  <section class='container-main'>
     <div class='row'>
       <div class='col-md-10'>
-        <!-- <h2>Saved Recipes</h2> -->
+        <div class="my-recipe-box">My Recipe Box</div>
       </div>
     </div>
 
@@ -132,102 +134,6 @@
   <!-- </div> -->
   <!--/.modal -->
 
-  <div class='recipe' data-recipe-id='${recipe._id}'>
-    <div class='col-xs-12 col-md-3'>
-      <div class='thumbnail'>
-        <img src='${recipe.imgUrl}' alt='recipe image'>
-        <div class='caption'>
-          <h4 class='inline-header'><strong>${recipe.name}</strong></h4>
-          <p>via<a href='${recipe.sourceUrl}'> ${recipe.source}</a></p>
-          <h4 class='inline-header'><strong>Ingredients:</strong></h4>
-          <ul>${recipe.ingredients}</ul>
-          <h4 class='inline-header'><strong>Reviews:</strong></h4>
-          <ul>${recipe.reviews}</ul>
-          <div class='bottom-align-buttons'>
-            <button type='button' class='btn btn-primary add-review'><span class="icon"><i class="fa fa-plus"></i></span> Add Review</button>
-            <button type='button' class='btn btn-danger delete-recipe'>            <span class="icon"><i class="fa fa-trash-o"></i></span> Delete Recipe</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-<!-- FROM APP.JS
-FROM APP.JS -->
-
-  <div class='row recipe' data-recipe-id='${recipe._id}'>
-    <div class='col-md-10 col-md-offset-1'>
-      <div class='panel panel-default'>
-        <div class='panel-body'>
-
-          <!-- begin recipe internal row -->
-          <div class='row'>
-            <div class='col-md-3 col-xs-12 thumbnail recipe-image'>
-              <img src='${recipe.imgUrl}' alt='recipe image'>
-            </div>
-
-            <div class='col-md-9 col-xs-12'>
-              <ul class='list-group'>
-                <li class='list-group-item'>
-                  <h4 class='inline-header'>Recipe Name:</h4>
-                  <span class='recipe-name'>${recipe.name}</span>
-                </li>
-
-                <li class='list-group-item'>
-                  <a href='${recipe.sourceUrl}'> via ${recipe.source}</a>
-                </li>
-
-                <li class='list-group-item'>
-                  <h4 class='inline-header'>Ingredients:</h4>
-                  <ul>${recipe.ingredients}</ul>
-                </li>
-                <li class='list-group-item'>
-                  <h4 class='inline-header'>Reviews:</h4>
-                  <ul>${recipe.reviews}</ul>
-                </li>
-              </ul>
-            </div>
-            <!-- end of recipe internal row -->
-
-            <div class='panel-footer'>
-              <button type='button' class='btn btn-primary add-review'>Add Review</button>
-              <button type='button' class='btn btn-danger delete-recipe'>Delete Recipe</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
 </body>
 
 </html>
-
-
-<!--
-CARDS TO BE DELETED
-
-
-
-***************
-
-
-  <div class='col-md-4'>
-    <div class='col-md-10'>
-        <div class='panel panel-default'> + <img src='${recipe.imgUrl}' alt='recipe image'> -
-          <div class='panel-body'> +
-            <p>
-              <h4>${recipe.name}</h4></p>
-            +
-            <p>via<a href='${recipe.sourceUrl}'> ${recipe.source}</a></p>
-            +
-            <h4 class='inline-header'>Ingredients:</h4> +
-            <ul>${ingredientList}</ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->

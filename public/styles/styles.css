@@ -1,6 +1,6 @@
-/*div {
+div {
   border: 1px dashed grey;
-}*/
+}
 
 body {
   background: #fff;
@@ -15,8 +15,39 @@ body {
   background-image: url(/images/food-background-2763.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 60vh;
+  height: 100vh;
   background-position: center;
+}
+
+.container-main {
+  padding-top: 5vh;
+  height: 100vh;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 45px !important;
+  text-align: left;
+  color: white;
+
+}
+
+.my-recipe-box{
+    font-family: 'Libre Baskerville', serif;
+    text-align: left;
+    padding-left: 15px;
+    color: white;
+    line-height: 3;
+    letter-spacing: 3px;
+    font-size: 30px !important;
+
+
+}
+
+.define {
+  letter-spacing: 2px;
+  margin: 0px 0px 20px 25px;
+  color: white;
 }
 
 .row.header {
@@ -29,21 +60,7 @@ body {
 .bottom-align-buttons {
   text-align: center;
 }
-
-h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 45px !important;
-  text-align: left;
-  color: white;
-
-}
-
-.define {
-  letter-spacing: 2px;
-  margin: 0px 0px 20px 25px;
-  color: white;
-}
-
+/* start search bar */
 .box{
   margin: 100px auto;
   width: 300px;
@@ -96,22 +113,17 @@ h2 {
   color: #4f5b66;
 }
 
+#search-ingredients {
+  color: black;
+}
 
-/*font-family: 'Arvo', serif;
-font-family: 'Cutive', serif;
-font-family: 'Raleway', sans-serif;
-*/
+/* end search bar */
 
-
+/* recipe header */
 .inline-header {
   display: inline-block;
   vertical-align: baseline;
   margin-right: 12px;
-}
-
-
-#search-ingredients {
-  color: black;
 }
 
 /*model transparent default*/
