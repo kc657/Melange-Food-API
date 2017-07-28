@@ -21,32 +21,26 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row header">
       <div class="col-xs-12 topBar">
-        <div class="col-xs-6 col-md-6 col-lg-6">
-            <h1>M&#233;lange</h1>
-            <p class="define">
+          <div class="col-xs-6">
+            <h2>M&#233;lange</h2>
+            <h5 class="define">
               (n.) a mixture of incongruous elements
-            </p>
-          <button type="search-ingredients" name="search-ingredients" id="search-ingredients">Search Ingredients</button>
+            </h5>
+          </div>
         </div>
+    </div>
+    <div class="row header">
+      <div class="col-md-6 col-md-offset-3">
+        <button type="search-ingredients" name="search-ingredients" id='search-ingredients'>Search Ingredients</button>
 
       </div>
-
-
     </div>
-  </div>
 
-  <!--
-  <div class='jumbotron'>
-    <div class='container'>
-      <h1>Welcome to M&#233;lange</h1>
-      <p>
-      (n.) a mixture of incongruous elements
-      </p>
-      <button type="search-ingredients" name="search-ingredients" id='search-ingredients'>Search Ingredients</button>
-    </div>
+    <div class="row header"></div>
+
   </div>
 
   <section class='container'>
@@ -59,7 +53,7 @@
     <div id='recipes'>
     </div>
 
-  </section> -->
+  </section>
 
   <!-- begin reviewModal: this is not visible until .modal() is called on it  -->
   <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='reviewModal'>

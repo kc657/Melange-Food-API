@@ -3,26 +3,41 @@ div {
 }
 
 body {
+  background: #fff;
+  font-family: 'Poppins';
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -.0125em;
+  color: #fff;
+  background: #19181b;
+  font-size: 1.125em
+}
+
+.container-fluid {
   background-image: url(/images/croissantsBaking.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  color: #EEE;
-  background-attachment: fixed;
+  height: 70vh;
+  background-position: center;
 }
 
-
-p.define {
+.row.header {
+  height: 20vh;
+}
+.define {
   font-style: italic;
   letter-spacing: 2px;
-  margin: 15px 0px 20px 25px;
-  font-size: 20px;
+  margin: 0px 0px 20px 25px;
+  color: white;
 }
 
-h1 {
+h2 {
+  text-transform: capitalize;
+
   font-family: 'Poppins', sans-serif;
-  font-size: 70px !important;
-  letter-spacing: 7px;
+  font-size: 45px !important;
   text-align: left;
+  color: white;
 
 }
 
@@ -33,9 +48,11 @@ h1 {
 font-family: 'Cutive', serif;
 font-family: 'Raleway', sans-serif;
 */
-/*
-.jumbotron .container {
+
+.jumbotron {
   height: 450px;
+  color: black
+  background
 }
 
 .inline-header {
@@ -44,9 +61,6 @@ font-family: 'Raleway', sans-serif;
   margin-right: 12px;
 }
 
-h1 {
-  text-shadow: 2px 2px 2px #FAA916 !important;
-}
 
 #search-ingredients {
   color: black;
