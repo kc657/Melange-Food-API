@@ -1,6 +1,6 @@
-/*div {
+div {
   border: 1px dashed grey;
-}*/
+}
 
 body {
   background: #fff;
@@ -8,15 +8,51 @@ body {
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -.0125em;
-  background: #19181b;
 }
 
 .container-fluid {
   background-image: url(/images/food-background-2763.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 60vh;
+  height: 100vh;
   background-position: center;
+}
+
+.container-main {
+  padding-top: 5vh;
+}
+
+.logo h1 {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-size: 72px;
+  letter-spacing: 7px;
+  line-height: 1em;
+  padding: 10px;
+}
+
+.logo {
+  width: 100% !important;
+  margin-bottom: 25px;
+}
+
+.my-recipe-box{
+    font-family: 'Libre Baskerville', serif;
+    text-align: left;
+    padding-left: 15px;
+    color: white;
+    line-height: 3;
+    letter-spacing: 3px;
+    font-size: 30px !important;
+}
+
+.define {
+  letter-spacing: 2px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
 }
 
 .row.header {
@@ -29,26 +65,7 @@ body {
 .bottom-align-buttons {
   text-align: center;
 }
-
-h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 45px !important;
-  text-align: left;
-  color: white;
-
-}
-
-.define {
-  letter-spacing: 2px;
-  margin: 0px 0px 20px 25px;
-  color: white;
-}
-
-.box{
-  margin: 100px auto;
-  width: 300px;
-  height: 50px;
-}
+/* start search bar */
 
 .container-1{
   width: 300px;
@@ -58,17 +75,18 @@ h2 {
 }
 
 .container-1 input#search{
-  width: 300px;
+  width: 48vw;
   height: 50px;
-  background: #2b303b;
+  background: #EAE3DE;
   border: none;
-  font-size: 10pt;
+  font-size: 12pt;
   float: left;
-  color: #63717f;
+  color: black;
   padding-left: 45px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  opacity: .75;
 }
 
 .container-1 input#search::-webkit-input-placeholder {
@@ -96,22 +114,17 @@ h2 {
   color: #4f5b66;
 }
 
+#search-ingredients {
+  color: black;
+}
 
-/*font-family: 'Arvo', serif;
-font-family: 'Cutive', serif;
-font-family: 'Raleway', sans-serif;
-*/
+/* end search bar */
 
-
+/* recipe header */
 .inline-header {
   display: inline-block;
   vertical-align: baseline;
   margin-right: 12px;
-}
-
-
-#search-ingredients {
-  color: black;
 }
 
 /*model transparent default*/
