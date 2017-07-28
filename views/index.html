@@ -9,7 +9,7 @@
   <!-- STYLESHEETS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins">
-
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles/styles.css">
 
   <!-- JQUERY SCRIPTS -->
@@ -24,17 +24,30 @@
   <div class="container-fluid">
     <div class="row header">
       <div class="col-xs-12 topBar">
-          <div class="col-xs-6">
-            <h2>M&#233;lange</h2>
-            <h5 class="define">
+        <div class="col-xs-6">
+          <h2>M&#233;lange</h2>
+          <h5 class="define">
               (n.) a mixture of incongruous elements
             </h5>
-          </div>
         </div>
+      </div>
     </div>
     <div class="row header">
       <div class="col-md-6 col-md-offset-3">
-        <button type="search-ingredients" name="search-ingredients" id='search-ingredients'>Search Ingredients</button>
+          <div class="box">
+            <div class="container-1">
+              <form class="form" id="searchRecipe">
+                <input type="hidden" name="app_id" value="e7f27eb3">
+                <input type="hidden" name="app_key" value="1a416555863a852b35cd1701d9a4c0c1">
+                <input type="hidden" name="to" value="1">
+                <span class="icon"><i class="fa fa-search"></i></span>
+                <input type="search" class="form-control gif-input" name="q" value="" id="search" placeholder="Search..." />
+              </form>
+
+              </div>
+
+            </div>
+          </div>
 
       </div>
     </div>
