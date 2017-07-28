@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const ReviewSchema = new Schema({
   author: String,
   date: { type: Date, default: Date.now },
-  wouldRecommend: Boolean
+  wouldRecommend: Number
 })
 
 const Review = mongoose.model('Review', ReviewSchema)
