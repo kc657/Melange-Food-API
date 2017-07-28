@@ -23,7 +23,8 @@ function recipesCreate (req, res) {
 }
 
 function recipesDestroy (req, res) {
-  db.Recipe.findOneAndRemove({ _id: req.params.recipeId }, function (err, foundRecipe) {
+  const recipe_id = req.params.recipe_id
+  db.Recipe.findOneAndRemove({ _id: recipe_id}, function (err, foundRecipe) {
     console.log('the recipe that is deleted is ' + foundRecipe)
     res.json(foundRecipe)
   })

@@ -30,7 +30,7 @@ app.post('/api/recipes/:recipe_id/reviews', controllers.review.reviewsCreate)
 
 app.post('/api/recipes', controllers.recipe.recipesCreate)
 
-app.delete('/api/recipes/:recipeId', controllers.recipe.recipesDestroy)
+app.delete('/api/recipes/:recipe_id', controllers.recipe.recipesDestroy)
 
 /**********
  * SERVER *
