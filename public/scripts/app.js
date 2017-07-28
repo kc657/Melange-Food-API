@@ -77,13 +77,13 @@ function handleDeleteRecipeClick (e) {
 
 function handleEditRecipeClick (e) {
   let newName = $('#editName').val()
-  console.log(newName);
+  console.log(newName)
   const recipeId = $('#editModal').data('recipe-id')
-  console.log(recipeId);
+  console.log(recipeId)
   $.ajax({
     url: '/api/recipes/' + recipeId,
     method: 'PUT',
-    data:{name: newName},
+    data: {name: newName},
     success: function (recipe) {
       $(`.recipe[data-recipe-id='${recipeId}']`).remove()
       renderEdamamRecipes(recipe)
@@ -171,9 +171,9 @@ function renderEdamamRecipes (recipe) {
             <h4 class='inline-header'><strong>Reviews:</strong></h4>
             <ul>${recipe.reviews}</ul>
             <div class='bottom-align-buttons'>
-              <button type='button' class='btn btn-primary add-review'><span class="icon"><i class="fa fa-plus"></i></span> Add Review</button>
-              <button type='button' class='btn btn-info edit-recipe'><span class="icon"><i class="fa fa-pencil"></i></span> Edit</button>
-              <button type='button' class='btn btn-danger delete-recipe'><span class="icon"><i class="fa fa-trash-o"></i></span> Delete Recipe</button>
+              <button type='button' class='btn btn-primary add-review'><span class='icon'><i class='fa fa-plus'></i></span> Add Review</button>
+              <button type='button' class='btn btn-info edit-recipe'><span class='icon'><i class='fa fa-pencil'></i></span> Edit</button>
+              <button type='button' class='btn btn-danger delete-recipe'><span class='icon'><i class='fa fa-trash-o'></i></span> Delete Recipe</button>
             </div>
 
           </div>

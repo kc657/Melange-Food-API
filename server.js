@@ -23,7 +23,7 @@ app.get('/api', controllers.api.index)
 // get recipes
 app.get('/api/recipes', controllers.recipe.recipesIndex)
 
-//get recipes by id
+// get recipes by id
 app.get('/api/recipes/:recipeId', controllers.recipe.show)
 
 // get specific recipe reviews
