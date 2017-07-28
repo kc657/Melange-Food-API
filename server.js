@@ -20,18 +20,25 @@ app.get('/', function homepage (req, res) {
 // routes
 app.get('/api', controllers.api.index)
 
+// get recipes
 app.get('/api/recipes', controllers.recipe.recipesIndex)
 
+//get recipes by id
 app.get('/api/recipes/:recipe_id', controllers.recipe.show)
 
+// get specific recipe reviews
 app.get('/api/recipes/:recipe_id/reviews', controllers.review.reviewsIndex)
 
-app.post('/api/recipes/:recipe_id/reviews', controllers.review.reviewsCreate)
-
+// create new recipe
 app.post('/api/recipes', controllers.recipe.recipesCreate)
 
+// create new review for recipe
+app.post('/api/recipes/:recipe_id/reviews', controllers.review.reviewsCreate)
+
+// edit recipe
 app.put('/api/recipes/:recipe_id', controllers.recipe.recipesEdit)
 
+// delete recipe
 app.delete('/api/recipes/:recipe_id', controllers.recipe.recipesDestroy)
 
 /**********

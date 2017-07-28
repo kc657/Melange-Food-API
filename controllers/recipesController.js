@@ -32,7 +32,14 @@ function recipesDestroy (req, res) {
 
 function recipesEdit(req, res) {
   const recipe_id = req.params.recipe_id
-  console.log(recipe_id);
+  db.Recipe.findById(recipe_id, function(err, foundRecipe) {
+    if (err) return res.status(500).json(err)
+    foundRecipe.name = req.body.name
+    foundRecipe.save(function (err, savedRecipe) {
+      if (err) {console.log('did not save recipe changes')}
+      res.json(savedRecipe)
+    })
+  })
 }
 
 module.exports = {
