@@ -1,6 +1,6 @@
-div {
+/*div {
   border: 1px dashed grey;
-}
+}*/
 
 body {
   background: #fff;
@@ -8,7 +8,6 @@ body {
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -.0125em;
-  color: #fff;
   background: #19181b;
 }
 
@@ -16,12 +15,19 @@ body {
   background-image: url(/images/croissantsBaking.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 70vh;
+  height: 60vh;
   background-position: center;
 }
 
 .row.header {
   height: 20vh;
+}
+
+.thumbnail {
+  max-height: 25%;
+}
+.bottom-align-buttons {
+  text-align: center;
 }
 
 h2 {
@@ -37,11 +43,6 @@ h2 {
   margin: 0px 0px 20px 25px;
   color: white;
 }
-
-#search-ingredients {
-
-}
-
 
 .box{
   margin: 100px auto;
@@ -101,11 +102,6 @@ font-family: 'Cutive', serif;
 font-family: 'Raleway', sans-serif;
 */
 
-.jumbotron {
-  height: 450px;
-  color: black
-  background
-}
 
 .inline-header {
   display: inline-block;
