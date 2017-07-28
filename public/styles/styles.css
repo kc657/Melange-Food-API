@@ -1,6 +1,6 @@
-/*div {
+div {
   border: 1px dashed grey;
-}*/
+}
 
 body {
   background: #fff;
@@ -12,7 +12,7 @@ body {
 }
 
 .container-fluid {
-  background-image: url(/images/croissantsBaking.jpg);
+  background-image: url(/images/food-background-2763.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   height: 60vh;
