@@ -30,6 +30,8 @@ app.post('/api/recipes/:recipe_id/reviews', controllers.review.reviewsCreate)
 
 app.post('/api/recipes', controllers.recipe.recipesCreate)
 
+app.put('/api/recipes/:recipe_id', controllers.recipe.recipesEdit)
+
 app.delete('/api/recipes/:recipe_id', controllers.recipe.recipesDestroy)
 
 /**********

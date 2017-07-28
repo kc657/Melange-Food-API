@@ -30,9 +30,15 @@ function recipesDestroy (req, res) {
   })
 }
 
+function recipesEdit(req, res) {
+  const recipe_id = req.params.recipe_id
+  console.log(recipe_id);
+}
+
 module.exports = {
   recipesIndex: recipesIndex,
   recipesCreate: recipesCreate,
   recipesDestroy: recipesDestroy,
+  recipesEdit: recipesEdit,
   show: show
 }

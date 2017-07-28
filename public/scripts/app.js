@@ -38,6 +38,9 @@ $(document).ready(function() {
   // //save review modal save button
   $('#saveReview').on('click', handleNewReviewSubmit)
 
+  // edit recipe
+  $('#recipes').on('click', '.edit-recipe', handleEditRecipeClick)
+
   // delete recipe when its delete button is clicked
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick)
 
@@ -54,14 +57,23 @@ $(document).ready(function() {
 
 // when a delete button for a specific recipe is clicked
 function handleDeleteRecipeClick(e) {
-  let recipeId = $(this).parents('.recipe').data('recipe-id')
+  let recipe_id = $(this).parents('.recipe').data('recipe-id')
   $.ajax({
-    url: '/api/recipes/' + recipeId,
+    url: '/api/recipes/' + recipe_id,
     method: 'DELETE',
     success: function handleDeleteRecipeSuccess(data) {
       let deletedRecipeId = data._id
       $('div[data-recipe-id=' + deletedRecipeId + ']').remove()
     }
+  })
+}
+
+function handleEditRecipeClick(e) {
+  let recipe_id = $(this).parents('.recipe').data('recipe-id')
+  $.ajax({
+    url: '/api/recipes/' + recipe_id,
+    method: 'PUT',
+    success: function (){console.log('')}
   })
 }
 
@@ -99,6 +111,16 @@ function getRecipes() {
   })
 }
 
+function renderIngredient(ingredients) {
+  let ingredientHtml = ''
+  ingredients.forEach(function(e) {
+    ingredientHtml += (`
+        <li class='ingredient' id='ingredient'>${e}</li>
+      `)
+  })
+  return ingredientHtml
+}
+
 // posting recipe from API onto database
 function postEdamamRecipes(recipes) {
   let edamamApiRecipe = {
@@ -120,7 +142,6 @@ function postEdamamRecipes(recipes) {
     }
   })
 }
-
 
 function renderEdamamRecipes(recipe) {
   let recipeHtml = (`
@@ -170,7 +191,7 @@ function renderSeedRecipes(recipe) {
             <ul>${recipe.reviews}</ul>
             <div class='bottom-align-buttons'>
               <button type='button' class='btn btn-primary add-review'><span class="icon"><i class="fa fa-plus"></i></span> Add Review</button>
-
+              <button type='button' class='btn btn-info edit-recipe'><span class="icon"><i class="fa fa-pencil"></i></span> Edit</button>
               <button type='button' class='btn btn-danger delete-recipe'><span class="icon"><i class="fa fa-trash-o"></i></span> Delete Recipe</button>
             </div>
 
@@ -182,15 +203,7 @@ function renderSeedRecipes(recipe) {
   $('#recipes').prepend(recipeHtml)
 }
 
-function renderIngredient(ingredients) {
-  let ingredientHtml = ''
-  ingredients.forEach(function(e) {
-    ingredientHtml += (`
-        <li class='ingredient' id='ingredient'>${e}</li>
-      `)
-  })
-  return ingredientHtml
-}
+
 
 function handleNewReviewSubmit(e) {
   const recipe_id = $('#reviewModal').data('recipe-id')
