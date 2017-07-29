@@ -37,6 +37,9 @@ $(document).ready(function () {
   // search modal save recipe button
   $('#recipes').on('click', '.add-recipe', postRecipes)
 
+  // search modal save recipe button
+  $('#recipes').on('click', '.close-recipe', closeRecipe)
+
   // edit recipe click to pop modal
   $('#recipes').on('click', '.edit-recipe', function handleEditRecipeClick (e) {
     const recipeId = $(this).closest('.recipe').data('recipe-id')
@@ -137,7 +140,7 @@ function renderModalSearchRecipe (recipes) {
     <ul>${edamamApiRecipe.yield}</ul>
     <div class='bottom-align-buttons'>
     <button type='button' class='btn btn-primary add-recipe'><span class='icon'><i class='fa fa-plus'></i></span> Add Recipe</button>
-    <button type='button' class='btn btn-danger delete-recipe'><span class='icon'><i class='fa fa-trash-o'></i></span> Delete Recipe</button>
+    <button type='button' class='btn btn-danger close-recipe'><span class='icon'><i class='fa fa-trash-o'></i></span> Not This Recipe</button>
     </div>
     </div>
     </div>
@@ -148,6 +151,11 @@ function renderModalSearchRecipe (recipes) {
     `)
   $('#recipes').prepend(recipeHtml)
   $('#recipeModal').modal()
+}
+
+// operation for the close button on modal
+function closeRecipe () {
+  $('#recipeModal').modal('hide')
 }
 
 // posting recipe from API onto database
