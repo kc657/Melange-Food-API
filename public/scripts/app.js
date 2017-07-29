@@ -1,10 +1,6 @@
 console.log('Sanity Check')
 
 $(document).ready(function () {
-  $('#search-ingredients').on('click', function (e) {
-    e.preventDefault()
-    $('#searchModal').modal('show')
-  })
 
   $.ajax({
     method: 'GET',
@@ -123,7 +119,6 @@ function renderModalSearchRecipe (recipes) {
     ingredients: recipes.hits[0].recipe.ingredientLines,
     yield: recipes.hits[0].recipe.yield
   }
-
   globalRecipe.push(edamamApiRecipe)
   let ingredientsFormattedList = renderIngredient(edamamApiRecipe.ingredients)
   let recipeHtml = (`
@@ -167,7 +162,6 @@ function postRecipes (recipes) {
     ingredients: globalRecipe[0].ingredients,
     yield: globalRecipe[0].yield
   }
-  console.log(edamamApiRecipe);
   $.ajax({
     method: 'POST',
     url: '/api/recipes',
@@ -177,6 +171,7 @@ function postRecipes (recipes) {
       console.log('Recipe posting failed')
     }
   })
+  $('#recipeModal').modal('hide')
 }
 
 function renderIngredient (ingredients) {
