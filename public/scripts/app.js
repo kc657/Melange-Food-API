@@ -10,7 +10,7 @@ $(document).ready(function () {
     method: 'GET',
     url: '/api/recipes',
     success: function (recipes) {
-      recipes.forEach(renderEdamamRecipes)
+      recipes.forEach(renderRecipes)
     },
     error: function (err) {
       throw err
@@ -86,7 +86,7 @@ function handleEditRecipeClick (e) {
     data: {name: newName},
     success: function (recipe) {
       $(`.recipe[data-recipe-id='${recipeId}']`).remove()
-      renderEdamamRecipes(recipe)
+      renderRecipes(recipe)
     }
   })
 }
@@ -98,7 +98,7 @@ function getRecipes () {
     url: 'https://api.edamam.com/search',
     data: $('form').serialize(),
     dataType: 'json',
-    success: function postEdamamRecipes (recipes) {
+    success: function postRecipes (recipes) {
       let edamamApiRecipe = {
         name: recipes.hits[0].recipe.label,
         calories: recipes.hits[0].recipe.calories,
@@ -113,7 +113,7 @@ function getRecipes () {
         method: 'POST',
         url: '/api/recipes',
         data: edamamApiRecipe,
-        success: renderEdamamRecipes,
+        success: renderModalSearchRecipe,
         error: function () {
           console.log('Recipe posting failed')
         }
@@ -136,7 +136,7 @@ function renderIngredient (ingredients) {
 }
 
 // posting recipe from API onto database
-function postEdamamRecipes (recipes) {
+function postRecipes (recipes) {
   let edamamApiRecipe = {
     name: recipes.hits[0].recipe.label,
     calories: recipes.hits[0].recipe.calories,
@@ -150,14 +150,45 @@ function postEdamamRecipes (recipes) {
     method: 'POST',
     url: '/api/recipes',
     data: edamamApiRecipe,
-    success: renderEdamamRecipes,
+    success: renderRecipes,
     error: function () {
       console.log('Recipe posting failed')
     }
   })
 }
 
-function renderEdamamRecipes (recipe) {
+function renderModalSearchRecipe (recipe) {
+  let recipeHtml = (`
+    <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='recipeModal'>
+      <div class='modal-dialog'>
+        <div class='recipe' data-recipe-id='${recipe._id}'>
+          <div class='col-xs-3 col-md-4'>
+            <div class='thumbnail'>
+              <img src='${recipe.imgUrl}' alt='recipe image'>
+              <div class='caption'>
+                <h4 class='inline-header'><strong>${recipe.name}</strong></h4>
+                <p>via<a href='${recipe.sourceUrl}'> ${recipe.source}</a></p>
+                <h4 class='inline-header'><strong>Ingredients:</strong></h4>
+                <ul>${recipe.ingredients}</ul>
+                <h4 class='inline-header'><strong>Reviews:</strong></h4>
+                <ul>${recipe.reviews}</ul>
+                <div class='bottom-align-buttons'>
+                  <button type='button' class='btn btn-primary add-review'><span class='icon'><i class='fa fa-plus'></i></span> Add Review</button>
+                  <button type='button' class='btn btn-info edit-recipe'><span class='icon'><i class='fa fa-pencil'></i></span> Edit</button>
+                  <button type='button' class='btn btn-danger delete-recipe'><span class='icon'><i class='fa fa-trash-o'></i></span> Delete Recipe</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    `)
+  $('#recipes').prepend(recipeHtml)
+  $('#recipeModal').modal()
+}
+
+function renderRecipes (recipe) {
   let recipeHtml = (`
     <div class='recipe' data-recipe-id='${recipe._id}'>
       <div class='col-xs-3 col-md-4'>
@@ -203,7 +234,7 @@ function handleNewReviewSubmit (e) {
         url: '/api/recipes/' + recipeId,
         success: function (recipe) {
           $(`.recipe[data-recipe-id='${recipeId}']`).remove()
-          renderEdamamRecipes(recipe)
+          renderRecipes(recipe)
         }
       })
     },
