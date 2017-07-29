@@ -39,7 +39,7 @@ $(document).ready(function () {
   $('#saveReview').on('click', handleNewReviewSubmit)
 
   // search modal save recipe button
-  // $('#add-recipe').on('click', saveRecipeFromModal)
+  $('#recipes').on('click', '.add-recipe', postRecipes)
 
   // edit recipe click to pop modal
   $('#recipes').on('click', '.edit-recipe', function handleEditRecipeClick (e) {
@@ -108,6 +108,9 @@ function getRecipes () {
   })
 }
 
+// store found recipe in global variable
+let globalRecipe = []
+
 // takes api data and puts on modal
 function renderModalSearchRecipe (recipes) {
   let edamamApiRecipe = {
@@ -120,6 +123,8 @@ function renderModalSearchRecipe (recipes) {
     ingredients: recipes.hits[0].recipe.ingredientLines,
     yield: recipes.hits[0].recipe.yield
   }
+
+  globalRecipe.push(edamamApiRecipe)
   let ingredientsFormattedList = renderIngredient(edamamApiRecipe.ingredients)
   let recipeHtml = (`
     <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='recipeModal'>
@@ -150,40 +155,19 @@ function renderModalSearchRecipe (recipes) {
   $('#recipeModal').modal()
 }
 
-// post recipes into database
-function postRecipes (recipes) {
-  let edamamApiRecipe = {
-    name: recipes.hits[0].recipe.label,
-    calories: recipes.hits[0].recipe.calories,
-    healthLabels: recipes.hits[0].recipe.healthLabels,
-    source: recipes.hits[0].recipe.source,
-    sourceUrl: recipes.hits[0].recipe.url,
-    imgUrl: recipes.hits[0].recipe.image,
-    ingredients: recipes.hits[0].recipe.ingredientLines,
-    yield: recipes.hits[0].recipe.yield
-  }
-  $.ajax({
-    method: 'POST',
-    url: '/api/recipes',
-    data: edamamApiRecipe,
-    success: renderModalSearchRecipe,
-    error: function () {
-      console.log('Recipe posting failed')
-    }
-  })
-}
-
 // posting recipe from API onto database
 function postRecipes (recipes) {
   let edamamApiRecipe = {
-    name: recipes.hits[0].recipe.label,
-    calories: recipes.hits[0].recipe.calories,
-    healthLabels: recipes.hits[0].recipe.healthLabels,
-    source: recipes.hits[0].recipe.source,
-    sourceUrl: recipes.hits[0].recipe.url,
-    imgUrl: recipes.hits[0].recipe.image,
-    ingredients: recipes.hits[0].recipe.ingredientLines
+    name: globalRecipe[0].name,
+    calories: globalRecipe[0].calories,
+    healthLabels: globalRecipe[0].healthLabels,
+    source: globalRecipe[0].source,
+    sourceUrl: globalRecipe[0].sourceUrl,
+    imgUrl: globalRecipe[0].imgUrl,
+    ingredients: globalRecipe[0].ingredients,
+    yield: globalRecipe[0].yield
   }
+  console.log(edamamApiRecipe);
   $.ajax({
     method: 'POST',
     url: '/api/recipes',
