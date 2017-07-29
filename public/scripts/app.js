@@ -125,16 +125,6 @@ function getRecipes () {
   })
 }
 
-function renderIngredient (ingredients) {
-  let ingredientHtml = ''
-  ingredients.forEach(function (e) {
-    ingredientHtml += (`
-        <li class='ingredient' id='ingredient'>${e}</li>
-      `)
-  })
-  return ingredientHtml
-}
-
 // posting recipe from API onto database
 function postRecipes (recipes) {
   let edamamApiRecipe = {
@@ -157,19 +147,30 @@ function postRecipes (recipes) {
   })
 }
 
+function renderIngredient (ingredients) {
+  let ingredientHtml = ''
+  ingredients.forEach(function (e) {
+    ingredientHtml += (`
+        <li class='ingredient' id='ingredient'>${e}</li>
+      `)
+  })
+  return ingredientHtml
+}
+
 function renderModalSearchRecipe (recipe) {
+  let ingredientsFormattedList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
     <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='recipeModal'>
       <div class='modal-dialog'>
         <div class='recipe' data-recipe-id='${recipe._id}'>
-          <div class='col-xs-3 col-md-4'>
+          <div class='col-md-12'>
             <div class='thumbnail'>
               <img src='${recipe.imgUrl}' alt='recipe image'>
               <div class='caption'>
                 <h4 class='inline-header'><strong>${recipe.name}</strong></h4>
                 <p>via<a href='${recipe.sourceUrl}'> ${recipe.source}</a></p>
                 <h4 class='inline-header'><strong>Ingredients:</strong></h4>
-                <ul>${recipe.ingredients}</ul>
+                <ul>${ingredientsFormattedList}</ul>
                 <h4 class='inline-header'><strong>Reviews:</strong></h4>
                 <ul>${recipe.reviews}</ul>
                 <div class='bottom-align-buttons'>
@@ -189,6 +190,7 @@ function renderModalSearchRecipe (recipe) {
 }
 
 function renderRecipes (recipe) {
+  let ingredientsFormattedList = renderIngredient(recipe.ingredients)
   let recipeHtml = (`
     <div class='recipe' data-recipe-id='${recipe._id}'>
       <div class='col-xs-3 col-md-4'>
@@ -198,7 +200,7 @@ function renderRecipes (recipe) {
             <h4 class='inline-header'><strong>${recipe.name}</strong></h4>
             <p>via<a href='${recipe.sourceUrl}'> ${recipe.source}</a></p>
             <h4 class='inline-header'><strong>Ingredients:</strong></h4>
-            <ul>${recipe.ingredients}</ul>
+            <ul>${ingredientsFormattedList}</ul>
             <h4 class='inline-header'><strong>Reviews:</strong></h4>
             <ul>${recipe.reviews}</ul>
             <div class='bottom-align-buttons'>
