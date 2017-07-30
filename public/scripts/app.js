@@ -23,6 +23,7 @@ $(document).ready(function () {
   // search modal save recipe button
   $('#modals').on('click', '.close-recipe', closeRecipe)
 
+  // add review button now opens modal
   $('#recipes').on('click', '.add-review', function (e) {
     let id = $(this).closest('.recipe').data('recipe-id')
     $('#reviewModal').data('recipe-id', id)
@@ -192,8 +193,19 @@ function renderIngredient (ingredients) {
   return ingredientHtml
 }
 
+function renderReview (reviews) {
+  let reviewHtml = ''
+  reviews.forEach(function (e) {
+    reviewHtml += (`
+          <li class='review' id='review'>${e.author} gave this a ${e.wouldRecommend}/10</li>
+        `)
+  })
+  return reviewHtml
+}
+
 function renderRecipes (recipe) {
   let ingredientsFormattedList = renderIngredient(recipe.ingredients)
+  let reviewsFormattedList = renderReview(recipe.reviews)
   let recipeHtml = (`
     <div class='recipe' data-recipe-id='${recipe._id}'>
       <div class='col-xs-3 col-md-4'>
@@ -205,7 +217,7 @@ function renderRecipes (recipe) {
             <h4 class='inline-header'><strong>Ingredients:</strong></h4>
             <ul>${ingredientsFormattedList}</ul>
             <h4 class='inline-header'><strong>Reviews:</strong></h4>
-            <ul>${recipe.reviews}</ul>
+            <ul>${reviewsFormattedList}</ul>
             <div class='bottom-align-buttons'>
               <button type='button' class='btn btn-primary add-review'><span class='icon'><i class='fa fa-plus'></i></span> Add Review</button>
               <button type='button' class='btn btn-info edit-recipe'><span class='icon'><i class='fa fa-pencil'></i></span> Edit</button>
