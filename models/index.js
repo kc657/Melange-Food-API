@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/recipe')
+mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/recipe')
 
 const Recipe = require('./recipe.js')
 const Review = require('./review.js')
