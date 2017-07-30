@@ -121,7 +121,7 @@ function renderModalSearchRecipe (recipes) {
     ingredients: recipes.hits[0].recipe.ingredientLines,
     yield: recipes.hits[0].recipe.yield
   }
-  globalRecipe.push(edamamApiRecipe)
+  globalRecipe.unshift(edamamApiRecipe)
   let ingredientsFormattedList = renderIngredient(edamamApiRecipe.ingredients)
   let preDbRecipeModal = (`
     <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='recipeModal'>
