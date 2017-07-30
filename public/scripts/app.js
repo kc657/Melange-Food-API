@@ -1,7 +1,6 @@
 console.log('Sanity Check')
 
 $(document).ready(function () {
-
   $.ajax({
     method: 'GET',
     url: '/api/recipes',
@@ -126,30 +125,30 @@ function renderModalSearchRecipe (recipes) {
   let ingredientsFormattedList = renderIngredient(edamamApiRecipe.ingredients)
   let recipeHtml = (`
     <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='recipeModal'>
-    <div class='modal-dialog'>
-    <div class='recipe' data-recipe-id=''>
-    <div class='col-md-12'>
-    <div class='thumbnail'>
-    <img src='${edamamApiRecipe.imgUrl}' alt='recipe image'>
-    <div class='caption'>
-    <h4 class='inline-header'><strong>${edamamApiRecipe.name}</strong></h4>
-    <p>via<a href='${edamamApiRecipe.sourceUrl}'> ${edamamApiRecipe.source}</a></p>
-    <h4 class='inline-header'><strong>Ingredients:</strong></h4>
-    <ul>${ingredientsFormattedList}</ul>
-    <h4 class='inline-header'><strong>Yield:</strong></h4>
-    <ul>${edamamApiRecipe.yield}</ul>
-    <div class='bottom-align-buttons'>
-    <button type='button' class='btn btn-primary add-recipe'><span class='icon'><i class='fa fa-plus'></i></span> Add Recipe</button>
-    <button type='button' class='btn btn-danger close-recipe'><span class='icon'><i class='fa fa-trash-o'></i></span> Not This Recipe</button>
+      <div class='modal-dialog'>
+        <div class='recipe' data-recipe-id=''>
+          <div class='col-md-12'>
+            <div class='thumbnail'>
+              <img src='${edamamApiRecipe.imgUrl}' alt='recipe image'>
+              <div class='caption'>
+              <h4 class='inline-header'><strong>${edamamApiRecipe.name}</strong></h4>
+              <p>via<a href='${edamamApiRecipe.sourceUrl}'> ${edamamApiRecipe.source}</a></p>
+              <h4 class='inline-header'><strong>Ingredients:</strong></h4>
+              <ul>${ingredientsFormattedList}</ul>
+              <h4 class='inline-header'><strong>Yield:</strong></h4>
+              <ul>${edamamApiRecipe.yield}</ul>
+              <div class='bottom-align-buttons'>
+                <button type='button' class='btn btn-primary add-recipe'><span class='icon'><i class='fa fa-plus'></i></span> Add Recipe</button>
+                <button type='button' class='btn btn-danger close-recipe'><span class='icon'><i class='fa fa-trash-o'></i></span> Not This Recipe</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+  </div>
     `)
-  $('#recipes').prepend(recipeHtml)
+  $('#modals').prepend(recipeHtml)
   $('#recipeModal').modal()
 }
 
