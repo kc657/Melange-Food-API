@@ -34,10 +34,10 @@ $(document).ready(function () {
   $('#saveReview').on('click', handleNewReviewSubmit)
 
   // search modal save recipe button
-  $('#recipes').on('click', '.add-recipe', postRecipes)
+  $('#modals').on('click', '.add-recipe', postRecipes)
 
   // search modal save recipe button
-  $('#recipes').on('click', '.close-recipe', closeRecipe)
+  $('#modals').on('click', '.close-recipe', closeRecipe)
 
   // edit recipe click to pop modal
   $('#recipes').on('click', '.edit-recipe', function handleEditRecipeClick (e) {
@@ -123,7 +123,7 @@ function renderModalSearchRecipe (recipes) {
   }
   globalRecipe.push(edamamApiRecipe)
   let ingredientsFormattedList = renderIngredient(edamamApiRecipe.ingredients)
-  let recipeHtml = (`
+  let preDbRecipeModal = (`
     <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='recipeModal'>
       <div class='modal-dialog'>
         <div class='recipe' data-recipe-id=''>
@@ -148,7 +148,7 @@ function renderModalSearchRecipe (recipes) {
     </div>
   </div>
     `)
-  $('#modals').prepend(recipeHtml)
+  $('#modals').prepend(preDbRecipeModal)
   $('#recipeModal').modal()
 }
 
