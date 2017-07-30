@@ -4,7 +4,7 @@
 <head>
   <meta charset='utf-8'>
 
-  <title>Melange Recipe API</title>
+  <title>M&#233;lange Recipe API</title>
 
   <!-- STYLESHEETS -->
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
@@ -38,11 +38,11 @@
     <div class='row header'>
       <div class='col-md-8 col-md-offset-3'>
         <div class='box'>
-          <div class='container-1'>
+          <div class='container-1 searchForm'>
             <form class='form-horizontal' id='searchRecipe'>
               <input type='hidden' name='app_id' value='e7f27eb3'>
               <input type='hidden' name='app_key' value='1a416555863a852b35cd1701d9a4c0c1'>
-              <input type='hidden' name='to' value='1'>
+              <input type='hidden' name='to' value='5'>
               <span class='icon'><i class='fa fa-search'></i></span>
               <input type='search' class='form-control gif-input' name='q' value='' id='search' placeholder='Search...' />
             </form>
@@ -63,66 +63,71 @@
   </section>
 
   <!-- begin reviewModal: this is not visible until .modal() is called on it  -->
-  <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='reviewModal'>
-    <div class='modal-dialog'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-          <h4 class='modal-title'>Add Review</h4>
-        </div>
-        <div class='modal-body'>
-          <fieldset class='form-horizontal'>
-            <!-- text input -->
-            <div class='form-group'>
-              <label class='col-md-4 control-label' for='reviewerName'>Your Name</label>
-              <div class='col-md-4'>
-                <input id='reviewerName' name='reviewerName' type='text' placeholder='' class='form-control input-md' />
-              </div>
+  <section>
+    <div id='modals'>
+      <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='reviewModal'>
+        <div class='modal-dialog'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+              <h4 class='modal-title'>Add Review</h4>
             </div>
-            <!-- value input -->
-            <div class='form-group'>
-              <label class='col-md-4 control-label' for='wouldRecommend'>Recommend This Recipe? Please rate it on a scale of 1 to 10</label>
-              <div class='col-md-4'>
-                <input id='recommendationRating' name='recommendation' type='number' class='form-control input-md' placeholder='1 - 10' min='1' max='10' />
-              </div>
+            <div class='modal-body'>
+              <fieldset class='form-horizontal'>
+                <!-- text input -->
+                <div class='form-group'>
+                  <label class='col-md-4 control-label' for='reviewerName'>Your Name</label>
+                  <div class='col-md-4'>
+                    <input id='reviewerName' name='reviewerName' type='text' placeholder='' class='form-control input-md' />
+                  </div>
+                </div>
+                <!-- value input -->
+                <div class='form-group'>
+                  <label class='col-md-4 control-label' for='wouldRecommend'>Recommend This Recipe? Please rate it on a scale of 1 to 10</label>
+                  <div class='col-md-4'>
+                    <input id='recommendationRating' name='recommendation' type='number' class='form-control input-md' placeholder='1 - 10' min='1' max='10' />
+                  </div>
+                </div>
+              </fieldset>
             </div>
-          </fieldset>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-default' data-dismiss='modal' id='closeModal'>Close</button>
+              <button type='button' class='btn btn-primary' id='saveReview'>Save Review</button>
+            </div>
+          </div>
+          <!--/.modal-content -->
         </div>
-        <div class='modal-footer'>
-          <button type='button' class='btn btn-default' data-dismiss='modal' id='closeModal'>Close</button>
-          <button type='button' class='btn btn-primary' id='saveReview'>Save Review</button>
-        </div>
+        <!--/.modal-dialog -->
       </div>
-      <!--/.modal-content -->
-    </div>
-    <!--/.modal-dialog -->
-  </div>
 
-  <!-- begin editModal: this is not visible until .modal() is called on it  -->
-  <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='editModal'>
-    <div class='modal-dialog'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-          <h4 class='modal-title'>Edit Recipe</h4>
-        </div>
-        <div class='modal-body'>
-          <fieldset class='form-horizontal'>
-            <!-- text input -->
-            <div class='form-group'>
-              <label class='col-md-4 control-label' for='editName'>New Recipe Name</label>
-              <div class='col-md-4'>
-                <input id='editName' name='editRecipeName' type='text' placeholder='' class='form-control input-md' />
-              </div>
+      <!-- begin editModal: this is not visible until .modal() is called on it  -->
+      <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='editModal'>
+        <div class='modal-dialog'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+              <h4 class='modal-title'>Edit Recipe</h4>
             </div>
-          </fieldset>
+            <div class='modal-body'>
+              <fieldset class='form-horizontal'>
+                <!-- text input -->
+                <div class='form-group'>
+                  <label class='col-md-4 control-label' for='editName'>New Recipe Name</label>
+                  <div class='col-md-4'>
+                    <input id='editName' name='editRecipeName' type='text' placeholder='' class='form-control input-md' />
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-default' data-dismiss='modal' id='closeModal'>Close</button>
+              <button type='button' class='btn btn-primary' id='saveEdit'>Save Edit</button>
+            </div>
+          </div>
+          <!--/.modal-content -->
         </div>
-        <div class='modal-footer'>
-          <button type='button' class='btn btn-default' data-dismiss='modal' id='closeModal'>Close</button>
-          <button type='button' class='btn btn-primary' id='saveEdit'>Save Edit</button>
-        </div>
+        <!--/.modal-dialog -->
       </div>
-      <!--/.modal-content -->
     </div>
-    <!--/.modal-dialog -->
-  </div>
+  </section>
+</body>

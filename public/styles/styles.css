@@ -1,6 +1,6 @@
-div {
+/*div {
   border: 1px dashed grey;
-}
+}*/
 
 body {
   background: #fff;
@@ -118,11 +118,6 @@ body {
   z-index: 1;
   color: #4f5b66;
 }
-
-#search-ingredients {
-  color: black;
-}
-
 
 /* end search bar */
 
