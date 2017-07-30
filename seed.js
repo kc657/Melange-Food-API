@@ -65,15 +65,15 @@ sampleRecipes.push({
 
 let sampleReviews = []
 
-// sampleReviews.push({
-//   author: 'Kevin',
-//   wouldRecommend: true
-// })
-//
-// sampleReviews.push({
-//   author: 'Mary',
-//   wouldRecommend: false
-// })
+sampleReviews.push({
+  author: 'Kevin',
+  wouldRecommend: true
+})
+
+sampleReviews.push({
+  author: 'Mary',
+  wouldRecommend: false
+})
 
 sampleRecipes.forEach(function (recipe) {
   recipe.reviews = sampleReviews

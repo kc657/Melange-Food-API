@@ -113,6 +113,7 @@ let globalRecipe = []
 
 // takes api data and puts on modal
 function renderModalSearchRecipe (recipes) {
+  console.log(globalRecipe);
   let edamamApiRecipe = {
     name: recipes.hits[0].recipe.label,
     calories: recipes.hits[0].recipe.calories,
@@ -156,6 +157,7 @@ function renderModalSearchRecipe (recipes) {
 
 // operation for the close button on modal
 function closeRecipe () {
+  globalRecipe = []
   $('#recipeModal').modal('hide')
 }
 
@@ -180,6 +182,7 @@ function postRecipes (recipes) {
       console.log('Recipe posting failed')
     }
   })
+  globalRecipe = []
   $('#recipeModal').modal('hide')
 }
 
