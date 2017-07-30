@@ -17,6 +17,12 @@ $(document).ready(function () {
     getRecipes()
   })
 
+  // search modal save recipe button
+  $('#modals').on('click', '.add-recipe', postRecipes)
+
+  // search modal save recipe button
+  $('#modals').on('click', '.close-recipe', closeRecipe)
+
   $('#recipes').on('click', '.add-review', function (e) {
     let id = $(this).closest('.recipe').data('recipe-id')
     $('#reviewModal').data('recipe-id', id)
@@ -27,23 +33,17 @@ $(document).ready(function () {
   $('#recipes').on('click', '.add-review', function handleAddReviewClick (e) {
     const recipeId = $(this).closest('.recipe').data('recipe-id')
     $('#reviewModal').data('recipe-id', recipeId)
-    $('#reviewModal').modal()
+    $('#reviewModal').modal('show')
   })
 
   // save review modal save button
   $('#saveReview').on('click', handleNewReviewSubmit)
 
-  // search modal save recipe button
-  $('#modals').on('click', '.add-recipe', postRecipes)
-
-  // search modal save recipe button
-  $('#modals').on('click', '.close-recipe', closeRecipe)
-
   // edit recipe click to pop modal
   $('#recipes').on('click', '.edit-recipe', function handleEditRecipeClick (e) {
     const recipeId = $(this).closest('.recipe').data('recipe-id')
     $('#editModal').data('recipe-id', recipeId)
-    $('#editModal').modal()
+    $('#editModal').modal('show')
   })
 
   // edit recipe click to save changes
@@ -90,6 +90,7 @@ function handleEditRecipeClick (e) {
       renderRecipes(recipe)
     }
   })
+  $('#editModal').modal('hide')
 }
 
 // getting recipe from edamam API
@@ -149,7 +150,7 @@ function renderModalSearchRecipe (recipes) {
   </div>
     `)
   $('#modals').prepend(preDbRecipeModal)
-  $('#recipeModal').modal()
+  $('#recipeModal').modal('show')
 }
 
 // operation for the close button on modal
@@ -246,4 +247,5 @@ function handleNewReviewSubmit (e) {
       console.log('saved new review not working')
     }
   })
+  $('#reviewModal').modal('hide')
 }
