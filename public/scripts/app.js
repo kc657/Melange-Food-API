@@ -113,7 +113,7 @@ let globalRecipe = []
 
 // takes api data and puts on modal
 function renderModalSearchRecipe (recipes) {
-  console.log(globalRecipe);
+  globalRecipe = []
   let edamamApiRecipe = {
     name: recipes.hits[0].recipe.label,
     calories: recipes.hits[0].recipe.calories,
