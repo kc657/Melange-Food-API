@@ -57,6 +57,11 @@ body {
 
 .thumbnail {
   max-height: 25%;
+  margin: 20px
+}
+
+.recipeBox {
+  background: white;
 }
 
 .bottom-align-buttons {
@@ -145,3 +150,7 @@ body {
   opacity: .9;
   filter: alpha(opacity=90);
 }
+
+/*.tempModal {
+  background: red;
+}*/
