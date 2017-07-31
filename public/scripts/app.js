@@ -211,7 +211,7 @@ function renderRecipes (recipe) {
   let reviewsFormattedList = renderReview(recipe.reviews)
   let recipeHtml = (`
     <div class='recipe' data-recipe-id='${recipe._id}'>
-      <div class='col-xs-3 col-md-4'>
+      <div class='col-xs-12 col-md-6 col-lg-4'>
         <div class='thumbnail'>
           <img src='${recipe.imgUrl}' alt='recipe image'>
           <div class='caption'>
