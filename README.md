@@ -20,22 +20,25 @@ M&#233;lange API provides the hungry user with a tool to take ingredients they h
 
 ## App Stories
 
-![Alt text] (/public/images/front-page.jpeg?raw=true "Optional title")
+<img src="http://i.imgur.com/errbdBV.jpg" width="600">
 
 * The home page has a search for for users to add ingredients and return matching results
 
-![Alt text] (/public/images/searchResult.jpeg?raw=true "Optional title")
+<img src="http://i.imgur.com/Loml1o6.jpg" width="600">
 
 * User will be able to enter keywords into the search bar and press enter to submit the form. Once the form is submitted, the server will call to the Edamam Recipe Search API using the user input. The API returns the recipe data, which is then rendered to a modal for the user to review.
 
-![Alt text] (/public/images/savedRecipe.jpeg?raw=true "Optional title")
+<img src="http://i.imgur.com/CTZIZAg.jpg" width="600">
 
 * When the user clicks on the "Add Recipe" button, an AJAX call posts that recipe's id to the database and renders the recipe onto the bottom of the landing page.
 
-* user will be able to see existing saved recipes and edit title
 * user will be able to click "add" button on query results and that recipe will be saved in our database
+
+* user will be able to see existing saved recipes and edit title
+
 * user will be able to delete local data
-* user will click review button to open a modal with fields for author name, date, and if they would recommend this recipe (yes or no). The results will append review information to that specific recipe.
+
+* user will click review button to open a modal with fields for author name and if they would recommend this recipe (yes or no). The results will append review information to that specific recipe.
 
 
 ## Planned Features
@@ -44,4 +47,4 @@ M&#233;lange API provides the hungry user with a tool to take ingredients they h
 
  - Navigation bar
 
- - Edit Yield and return refactored recipe 
+ - Edit Yield and return refactored recipe
