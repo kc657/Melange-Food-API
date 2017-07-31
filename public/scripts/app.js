@@ -127,13 +127,14 @@ function renderModalSearchRecipe (recipes) {
   globalRecipe.unshift(edamamApiRecipe)
   let ingredientsFormattedList = renderIngredient(edamamApiRecipe.ingredients)
   let preDbRecipeModal = (`
-    <div class='modal modal-transparent fade' tabindex='-1' role='dialog' id='recipeModal'>
+    <div class='modal modal-transparent fade tempModal' tabindex='-1' role='dialog' id='recipeModal'>
       <div class='modal-dialog'>
         <div class='recipe' data-recipe-id=''>
-          <div class='col-md-12'>
-            <div class='thumbnail'>
+          <div class='col-md-12 recipeBox'>
+            <div class='col-md-5 thumbnail'>
               <img src='${edamamApiRecipe.imgUrl}' alt='recipe image'>
-              <div class='caption'>
+            </div>
+            <div class='col-md-6 caption'>
               <h4 class='inline-header'><strong>${edamamApiRecipe.name}</strong></h4>
               <p>via<a href='${edamamApiRecipe.sourceUrl}'> ${edamamApiRecipe.source}</a></p>
               <h4 class='inline-header'><strong>Ingredients:</strong></h4>
@@ -149,7 +150,6 @@ function renderModalSearchRecipe (recipes) {
         </div>
       </div>
     </div>
-  </div>
     `)
   $('#modals').prepend(preDbRecipeModal)
   $('#recipeModal').modal('show')
