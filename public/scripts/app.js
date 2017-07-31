@@ -142,7 +142,7 @@ function renderModalSearchRecipe (recipes) {
               <h4 class='inline-header'><strong>Yield:</strong></h4>
               <ul>${edamamApiRecipe.yield}</ul>
               <div class='bottom-align-buttons'>
-                <button type='button' class='btn btn-primary add-recipe'><span class='icon'><i class='fa fa-plus'></i></span> Add Recipe</button>
+                <button type='button' class='btn btn-primary add-recipe'><span class='icon'><i class='fa fa-plus'></i></span> Add This Recipe</button>
                 <button type='button' class='btn btn-danger close-recipe'><span class='icon'><i class='fa fa-trash-o'></i></span> Not This Recipe</button>
               </div>
             </div>
