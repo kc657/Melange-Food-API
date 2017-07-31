@@ -1,6 +1,6 @@
-# food-search-api
+# M&#233;lange food-search-api
 
-Melange API provides the hungry user with a tool to find recipes! Integration of the Edamam Recipe Search API allows the user to search for recipes using multiple ingredients in their inventory. The user can then save the search results and generate a list of saved recipes they want to cook.
+M&#233;lange API provides the hungry user with a tool to take ingredients they have in their pantry and search for new recipes! By integrating the Edamam Recipe Search API, the user is able to search for recipes using multiple ingredients in their inventory. The app returns a matching recipe the user can then save to the database and generate a list of saved recipes they want to cook.
 
 ## Technologies Used
 
@@ -20,8 +20,12 @@ Melange API provides the hungry user with a tool to find recipes! Integration of
 
 ## App Stories
 
+* The home page has a search for for users to add ingredients and return matching results
+
+![Alt text] (/public/images/front-page.jpeg?raw=true "Optional title")
+
+user will be ale to click search for recipes by keyword and return matching results
 * user will be able to see existing saved recipes and edit title
-* user will be ale to click search for recipes by keyword and return matching results
 * user will be able to click "add" button on query results and that recipe will be saved in our database
 * user will be able to delete local data
 * user will click review button to open a modal with fields for author name, date, and if they would recommend this recipe (yes or no). The results will append review information to that specific recipe.
